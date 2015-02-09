@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var Label: UILabel!
     
@@ -19,6 +19,8 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.identifiantTextField.delegate = self
+        self.MDPTextField.delegate = self
         self.title = "Connexion"//Modification du titre de la view
         var user: String? = NSUserDefaults.standardUserDefaults().stringForKey("userName")
         var pass: String? = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
@@ -35,6 +37,11 @@ class LogInViewController: UIViewController {
     }
     
     //Referme le clavier au clique sur la view
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true);
+        return false;
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
