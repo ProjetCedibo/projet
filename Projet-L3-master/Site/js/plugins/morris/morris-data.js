@@ -7,7 +7,7 @@ $(function() {
         element: 'morris-area-chart',
         data: [{
             period: '2010 Q1',
-            iphone: 2666,
+            iphone: 23000,
             ipad: null,
             itouch: 2647
         }, {
@@ -29,7 +29,7 @@ $(function() {
             period: '2011 Q1',
             iphone: 6810,
             ipad: 1914,
-            itouch: 2293
+            itouch: 0
         }, {
             period: '2011 Q2',
             iphone: 5670,
@@ -42,7 +42,7 @@ $(function() {
             itouch: 1588
         }, {
             period: '2011 Q4',
-            iphone: 15073,
+            iphone: 56777,
             ipad: 5967,
             itouch: 5175
         }, {
