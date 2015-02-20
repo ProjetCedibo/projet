@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82D60D341A67330400FA720A"
-               BuildableName = "SJEPG.app"
-               BlueprintName = "SJEPG"
+               BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+               BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename"
                ReferencedContainer = "container:SJEPG.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82D60D491A67330400FA720A"
-               BuildableName = "SJEPGTests.xctest"
-               BlueprintName = "SJEPGTests"
+               BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest"
+               BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests"
                ReferencedContainer = "container:SJEPG.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82D60D491A67330400FA720A"
-               BuildableName = "SJEPGTests.xctest"
-               BlueprintName = "SJEPGTests"
+               BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest"
+               BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests"
                ReferencedContainer = "container:SJEPG.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82D60D341A67330400FA720A"
-            BuildableName = "SJEPG.app"
-            BlueprintName = "SJEPG"
+            BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename"
             ReferencedContainer = "container:SJEPG.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82D60D341A67330400FA720A"
-            BuildableName = "SJEPG.app"
-            BlueprintName = "SJEPG"
+            BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename"
             ReferencedContainer = "container:SJEPG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -94,8 +94,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82D60D341A67330400FA720A"
-            BuildableName = "SJEPG.app"
-            BlueprintName = "SJEPG"
+            BuildableName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BlueprintName = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename"
             ReferencedContainer = "container:SJEPG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

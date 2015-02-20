@@ -15,11 +15,16 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        var url = NSURL(string:"http://www.kinderas.com/")
-        var req = NSURLRequest(URL:url!)
-        webView.loadRequest(req)
-    
+        loadweb()
     }
+    
+    func loadweb() {
+        var url = NSURL(string:"http://moodle.univ-fcomte.fr/")
+        var req = NSURLRequest(URL:url!)
+        
+        webView.loadRequest(req)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,12 +43,6 @@ class WebViewController: UIViewController {
     @IBAction func goForward(AnyObject) {
         webView.goForward()
     }
-    
-    
-    @IBAction func stop(AnyObject) {
-        webView.stopLoading()
-    }
-    
     
     
 

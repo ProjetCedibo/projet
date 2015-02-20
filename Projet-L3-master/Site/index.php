@@ -3,6 +3,7 @@
 session_start();
 
 include 'php/bibli_generale.php';
+include 'php/bibli_bd.php';
  
 ob_start();
 $page = 'Index';
@@ -11,7 +12,28 @@ afficheBarreHaute();
 afficheBarreGauche($page);
 afficheMiniBarre($page);
  
-        
+
+
+bd_Connecter();
+$sql = "SELECT COUNT(*) FROM User";
+$res =mysql_query($sql);
+$nb_user = mysql_result($res, 0);
+
+$sql = "SELECT count(Distinct`AdminId`) FROM Admin";
+$res =mysql_query($sql);
+$nb_admin = mysql_result($res, 0);
+
+$date = date("Y-m-d");
+$sql = "SELECT count(Distinct `ConnectionUser`) FROM Connection WHERE `ConnectionDate`=\"$date\"";
+$res =mysql_query($sql);
+$nb_connectJour = mysql_result($res, 0);
+
+$sql = "SELECT count(Distinct `ConnectionId`) FROM Connection";
+$res =mysql_query($sql);
+$nb_connect = mysql_result($res, 0);
+
+mysql_close();
+
             echo   
                 '<div class="row">',
                     
@@ -24,7 +46,7 @@ afficheMiniBarre($page);
                                         '<i class="fa fa-comments fa-5x"></i>',
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
-                                        '<div class="huge">WW</div>',
+                                        '<div class="huge">',$nb_user ,'</div>',
                                         '<div>Nombre d\'utilisateurs</div>',
                                     '</div>',
                                ' </div>',
@@ -49,7 +71,7 @@ afficheMiniBarre($page);
                                         '<i class="fa fa-tasks fa-5x"></i>',
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
-                                        '<div class="huge">XX</div>',
+                                        '<div class="huge">',$nb_admin,'</div>',
                                         '<div>Nombre d\'administrateurs </div>',
                                     '</div>',
                                 '</div>',
@@ -73,7 +95,7 @@ afficheMiniBarre($page);
                                         '<i class="fa fa-shopping-cart fa-5x"></i>',
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
-                                        '<div class="huge">YY</div>',
+                                        '<div class="huge">',$nb_connect,'</div>',
                                         '<div>Connexions depuis le premier jour</div>',
                                     '</div>',
                                 '</div>',
@@ -97,7 +119,7 @@ afficheMiniBarre($page);
                                         '<i class="fa fa-support fa-5x"></i>',
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
-                                        '<div class="huge">ZZ</div>',
+                                        '<div class="huge">',$nb_connectJour,'</div>',
                                         '<div>Connexions du jour</div>',
                                     '</div>',
                                 '</div>',

@@ -88,7 +88,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func updateConnectionState(state: Int){
 
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
-        let myUrl = NSURL(string: "http://localhost:8888/php/update-login.php");
+        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/update-login.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";

@@ -17,8 +17,43 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS9-qe-I7l">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="YS9-qe-I7l" secondAttribute="centerX" id="3GL-nH-QrV"/>
+                            <constraint firstItem="YS9-qe-I7l" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fEs-UX-6sQ"/>
+                            <constraint firstItem="YS9-qe-I7l" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="47" id="khU-XE-xxA"/>
+                            <constraint firstItem="YS9-qe-I7l" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="uMx-u7-3SO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="YS9-qe-I7l"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3GL-nH-QrV"/>
+                                <exclude reference="fEs-UX-6sQ"/>
+                                <exclude reference="khU-XE-xxA"/>
+                                <exclude reference="uMx-u7-3SO"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="YS9-qe-I7l"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3GL-nH-QrV"/>
+                                <include reference="fEs-UX-6sQ"/>
+                                <include reference="khU-XE-xxA"/>
+                                <include reference="uMx-u7-3SO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Agenda" id="jtC-l7-b3o">
                         <barButtonItem key="leftBarButtonItem" image="ImagehamburgerMenu" id="2E1-VN-ffh">
@@ -46,6 +81,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dcd" destination="YS9-qe-I7l" id="J0a-Kh-KwC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,35 +248,6 @@
             </objects>
             <point key="canvasLocation" x="2314.5" y="-325"/>
         </scene>
-        <!--LeftMenuView-->
-        <scene sceneID="Lix-RQ-kyO">
-            <objects>
-                <tableViewController storyboardIdentifier="LeftMenuView" title="LeftMenuView" id="RXR-6n-lMp" customClass="LeftMenuView" customModule="SJEPG" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wcv-hP-YOB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7Oc-Is-YY5">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Oc-Is-YY5" id="d7M-dE-A3a">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="qMC-eJ-p5N" kind="presentation" trigger="accessoryAction" id="0yP-V1-Zt9"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="RXR-6n-lMp" id="WHM-qu-bnK"/>
-                            <outlet property="delegate" destination="RXR-6n-lMp" id="RlS-1M-D0X"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ez6-LT-cwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1524" y="-998"/>
-        </scene>
         <!--WebViewController-->
         <scene sceneID="9fu-Ot-tzP">
             <objects>
@@ -257,7 +266,7 @@
                                     <barButtonItem systemItem="stop" id="r4z-UX-WR1">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="stop:" destination="qMC-eJ-p5N" id="dcr-wg-APK"/>
+                                            <action selector="done:" destination="qMC-eJ-p5N" id="Emd-DV-2AU"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aVy-PK-R3u"/>
@@ -286,6 +295,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-hu-24j">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qMC-eJ-p5N" id="K29-xx-IRj"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -338,7 +350,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="webView" destination="ba8-hu-24j" id="glf-fm-2DB"/>
                     </connections>

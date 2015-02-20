@@ -253,4 +253,12 @@ afficheMiniBarre($page);
 
 footer();
 
+
+function send_notif(){
+    
+}
+
+
+
+
 ?>

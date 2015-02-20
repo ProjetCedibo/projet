@@ -54,18 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var deviceTokenString: String = ( deviceToken.description as NSString )
             .stringByTrimmingCharactersInSet( characterSet )
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
-        println( deviceToken )
+        println( deviceTokenString )
         
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
         var device = UIDevice.currentDevice().model
         
-        let myUrl = NSURL(string: "http://localhost:8888/php/notif.php");
+        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/notif.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
         // Compose a query string
-        let postString = "DeviceID=\(UUID)&Token\(deviceToken)";//
+        let postString = "DeviceID=\(UUID)&Token=\(deviceTokenString)";//
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         

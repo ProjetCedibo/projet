@@ -39,6 +39,18 @@ function bd_Connecter() {
     if (!mysql_select_db($db_name, $db)){
         die ("Could not select database");
     }
+
+    /*$db = mysql_connect("mysql.2freehosting.com","u957551264_sjepg", "papuche25");
+
+    if (!$db){
+        echo "Could not connect to database";
+        exit();
+    }
+
+    $db_name = "u957551264_sjepg";
+    if (!mysql_select_db($db_name, $db)){
+        die ("Could not select database");
+    }*/
 }
 
 //_______________________________________________________________
