@@ -1,0 +1,644 @@
+/*______________ DEBUT DE LA FEUILLE DE STYLES ___________________    	
+
+__________________________________________________________________
+
+			RE-INITIALISATION DES TAGS HTML
+	Pour éviter les valeurs par défaut différentes suivant les 
+	navigateurs. Seuls les tags le plus	souvent utilisés et non 
+	dépréciés sont pris en compte.
+	Reset complet : http://meyerweb.com/eric/tools/css/reset/
+__________________________________________________________________
+*/
+html, body, div, span, applet, iframe,
+h1, h2, h3, h4, h5, h6, p, pre,
+a, img, strong, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font-weight: normal;	
+	vertical-align: baseline;
+	background: transparent;
+	}
+body {
+	line-height: 1;
+	}	
+ol, ul {
+	list-style: none;
+	}   	
+/* 
+__________________________________________________________________
+
+				FEUILLE DE STYLES ORIGINALE
+__________________________________________________________________ 
+*/
+body {
+	font: 13px/1.4 Verdana, Arial, Sans-Serif;		
+  	color: #404040;
+	background: #9ac5e7 url(../images/fond.jpg) repeat;  	
+	}
+      
+#bcPage {
+	position: relative;
+	background-color: #FFFFFF;
+	border: 2px solid #000;
+	margin: 20px auto 20px auto;
+	width: 800px;
+	text-align: justify;
+}
+	
+#bcEntete {
+	position: relative;
+	background: url(../images/entete.jpg) no-repeat;	
+	height: 200px;
+	padding: 0;
+	margin: 0;
+}	
+
+#bcTexte {
+	position: relative;
+	padding: 10px;	
+	min-height: 400px;
+	margin-bottom: 30px;
+}
+ 
+#bcEnseigne {
+	position: fixed;
+	margin-top: 10px;
+	margin-left: -202px;
+	height: 200px;
+	width: 200px;
+	background: url(../images/enseigne.png) no-repeat;
+}
+	
+h1, h2, h3 {	
+	font-weight: bold;
+	margin: 1em 0;
+	}
+
+h1 { font-size: 21px; }	
+h2 { 
+	font-size: 18px; 
+	border-bottom: 2px solid #FF9B37;
+	padding-left: 0.5em;
+	}
+h3 {
+	font-size: 15px;
+	margin-left: 1em;
+	}
+
+p { margin: 1em; }
+
+strong { font-weight: bold; }
+
+a {
+/*	font-weight: bold; */
+	text-decoration: none; 
+	color: #3c96f1;
+	}
+	
+a:hover { text-decoration: underline; }	
+
+.clear {
+	clear: both;	
+}
+
+.lienExterne:hover {
+	background: url('../images/lien_externe.gif') no-repeat right;
+	padding-right: 20px;	
+	}
+
+ul {
+	margin: 0em 1em 1em 3em;
+	}
+li {
+	background: url('../images/puce.png') no-repeat;	
+	padding-left: 16px;
+}
+		
+#ulMenu {
+	margin: 0 0 2em 1em;
+	}
+#ulMenu ul {
+	margin: 0 1em 0 3em;
+	}
+#ulMenu li {
+	margin: 0.5em 0;
+	}
+
+#lienFacebook {
+	background: url(../images/rezosociaux.jpg) no-repeat 0px 0px;
+	margin-top: 80px;
+	margin-left: 52px;
+}
+
+#lienTwitter {
+	background: url(../images/rezosociaux.jpg) no-repeat -76px 0px;
+	margin-top: 80px;
+	margin-left: 5px;
+}
+
+#lienGooglePlus {
+	background: url(../images/rezosociaux.jpg) no-repeat -38px 0px;
+	margin-top: 5px;
+	margin-left: 52px;
+}
+
+#lienPinterest {
+	background: url(../images/rezosociaux.jpg) no-repeat -113px 0px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+#bcEnseigne a {
+	width: 32px;
+	display: block;
+	height: 32px;	
+	float: left;
+}
+
+#bcCompo {
+	position: relative;
+	height: 350px;
+	display: block;
+}
+
+#imgLecteur {
+	top: 125px;
+	left: 350px;
+}
+
+.couverture {
+	position: absolute;	
+}
+
+#imgWatchmen {
+	top: 20px;
+	left: 80px;	
+}
+
+#imgPHP4Dummies {
+	left: 560px;
+	top: 40px;	
+}
+
+#imgH2G2 {
+	left: 240px;
+	top: 120px;	
+}
+
+#imgTWD {
+	top: 200px;
+	left: 430px;	
+}
+
+#img1984 {
+	top: 0px;
+	left: 370px;
+}
+
+#imgPaiementSecurise {
+	float: right;
+	margin-left: 10px;	
+	margin-right: 10px;	
+}
+
+#imgLivraison {
+	float: left;
+	margin-right: 10px;	
+	margin-left: 10px;	
+}
+
+#imgCadeauSouris {
+	float: right;
+	margin-top: 10px;
+	margin-right: -70px;
+	border: solid 2px #000;
+	margin-left: 10px;	
+}
+
+
+#pied {
+	clear: both;
+	bottom: 0px;
+	margin: 2em 0 0 0;
+	padding-top: 10px;
+	text-align: center;
+	width: 800px;
+	font-size: 10px;
+}
+
+
+#soustitre {
+	background: transparent url(../images/soustitre.png) no-repeat;
+	position: absolute; 
+	bottom: 0px; 
+	right: 0px;
+	width: 364px;
+	height: 50px;
+}
+
+
+#bcLogo {
+	overflow: auto;	
+}
+
+#bcLogo #logo {
+	position: absolute; 
+	left: 20px; 
+	top: 10px;		
+	width: 450px;
+	height: 180px;
+	background: transparent url(../images/logo.png) no-repeat;
+}
+
+#bcLogo:hover .lienMenu {
+	visibility: visible;	
+}
+
+.lienMenu {
+	position: absolute;
+	visibility: hidden;	
+	height: 55px;
+	width: 55px; 
+}
+
+#lienSearch {
+	background: url(../images/icon-search.png) no-repeat;	
+}
+#lienSearch:hover {
+	background: url(../images/icon-search-hover.png) no-repeat;	
+}
+
+#lienCart {
+	background: url(../images/icon-cart.png) no-repeat;	
+}
+#lienCart:hover {
+	background: url(../images/icon-cart-hover.png) no-repeat;	
+}
+
+#lienList {
+	background: url(../images/icon-list.png) no-repeat;	
+}
+#lienList:hover {
+	background: url(../images/icon-list-hover.png) no-repeat;	
+}
+#lienAccount {
+	background: url(../images/icon-account.png) no-repeat;	
+}
+#lienAccount:hover {
+	background: url(../images/icon-account-hover.png) no-repeat;	
+}
+
+#lienDisconnect {
+	background: url(../images/icon-logout.png) no-repeat;	
+}
+#lienDisconnect:hover {
+	background: url(../images/icon-logout-hover.png) no-repeat;	
+}		
+
+
+#lienSearchD {
+	background: url(../images/icon-search.png) no-repeat;	
+}
+#lienSearchD:hover {
+	background: url(../images/icon-search-hover.png) no-repeat;	
+}
+
+#lienCartD {
+	background: url(../images/icon-cart.png) no-repeat;	
+}
+#lienCartD:hover {
+	background: url(../images/icon-cart-hover.png) no-repeat;	
+}
+
+#lienListD {
+	background: url(../images/icon-list.png) no-repeat;	
+}
+#lienListD:hover {
+	background: url(../images/icon-list-hover.png) no-repeat;	
+}
+
+#lienConnect {
+	background: url(../images/icon-login.png) no-repeat;	
+}
+#lienConnect:hover {
+	background: url(../images/icon-login-hover.png) no-repeat;	
+}		
+
+/* Positions des puces de navigation */
+.position1 {
+	top: 130px;
+	left: 10px;	
+}
+
+.position2 {
+	top: 140px;
+	left: 70px;	
+}
+
+.position3 {
+	top: 130px;
+	left: 130px;	
+}
+
+.position4 {
+	top: 135px;
+	left: 190px;	
+}
+
+.position5 {
+	top: 135px;	
+	left: 290px;
+}
+
+
+
+.bcArticle {
+	float: left;
+	width: 195px;
+	height: 250px;
+	text-align: center;
+	position: relative;
+}
+
+.bcArticle img {
+	height: 160px;	
+	border: solid 1px #000;
+}
+
+.bcArticle .bcOptions {
+	width: 40px;
+	height: 180px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	visibility: hidden;
+}
+
+.bcArticle:hover .bcOptions {
+	visibility: visible;
+}
+
+
+.addToCart {
+	margin-top: 30px;
+	display: block;
+	width: 40px;
+	height: 25px;
+	background: url(../images/btnAddToCart.png) no-repeat;
+}
+
+.addToWishlist {
+	margin-top: 10px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url(../images/btnAddToWishlist.png) no-repeat;
+}
+
+
+.font6 {
+	font-size: 6px;	
+}
+	
+/*____________________________ TP4 ________________________________*/   
+
+#searchRecherche{
+	text-align:center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+input, select{
+	margin: 0px;
+}
+
+.BookRecherche:hover{
+	border:3px solid green;
+	background-color:#FFFFE0;
+	padding:10px;
+}
+
+.BookRecherche .Options {
+	width: 40px;
+	height: 120px;
+	visibility: hidden;
+}
+
+.BookRecherche:hover .Options {
+	visibility: visible;
+}
+
+.Options{
+	position: absolute;
+	margin-left: 700px;
+	margin-top: -120px;
+}
+
+/*____________________________ TP5 ________________________________*/  
+
+.bcFormulaireBoite {
+	border: solid 2px #FF9B37;
+	border-radius: 10px;
+	width: 350px;
+	height: 150px;
+	display: block;
+	float: left;
+	position: relative;
+	margin: 10px 10px 10px 20px; 	
+	padding: 0;	
+}	
+	
+.centered {
+	text-align: center;	
+}
+
+.tdGauche {
+	text-align: right;	
+}
+
+td {
+	padding: 2px 3px;
+}
+
+.enteteBloc {
+	background-color: #FF9B37;
+	color: #FFF;	
+	padding: 6px 4px;
+	margin: 0 0 10px 0;
+	font-weight: bold;
+	font-size: 14px;
+	border-radius: 5px 5px 0 0;
+}
+
+.bottomed {
+	width: 320px;
+	position: absolute;
+	bottom: 0px;	
+}
+
+.erreur {
+	border: solid 2px #A00000;
+	color: #A00000;
+	font-weight: bold;	
+	padding: 5px;
+	margin: 10px 20px;
+}
+
+.succes {
+	border: solid 2px #BADA55;
+	color: #BADA55;
+	font-weight: bold;	
+	padding: 5px;
+	margin: 10px 20px;
+}
+
+/*____________________________ PROJET : PAGE DETAIL ________________________________*/  
+
+.detail_add{
+	position : absolute;
+	right : 20px;
+	top : 85px;
+}
+
+/*____________________________ PROJET : PAGE LISTE ________________________________*/  
+
+.addgift{
+	margin-top: 30px;
+	display: block;
+	width: 40px;
+	height: 25px;
+	background: url(../images/cadeau.png) no-repeat;
+}
+
+/*____________________________ PROJET : BOUTON FORMULAIRE ________________________________*/ 
+
+input[type=submit] {
+	background: transparent url(../images/bouton.png) no-repeat;
+	height: 26px;
+	width: 102px;
+	text-align: center;
+	color: #FFF;
+	border: none;	
+	font-weight: bold;
+	cursor: pointer;
+}
+
+/*____________________________ PROJET : PAGE COMPTE ________________________________*/  
+
+#onglets { 
+	position : absolute;
+	border : 1px solid transparent;
+	padding : 0;
+	font : bold 13px arial, serif;
+	list-style-type : none;
+	left : 50%;
+	margin-top : 0;
+	width : 500px;
+	margin-left : -380px; /* la moitié de width */ 
+}
+
+#onglets li {
+	float : left; 
+	height : 21px; /* à modifier suivant la taille de la police pour centrer le texte dans l'onglet */ 
+	background-color: #F4F9FD; 
+	margin : 2px 2px 0 2px !important; 
+	border : 2px solid black; 
+	border-radius: 8px 8px 0 0; 
+}
+
+#onglets li.active { 
+	border-bottom: 3px 
+	solid #fff; 
+	padding-left:10px; 
+	padding-right:10px; 
+	padding-top:1px; 
+	background : #fff; 
+}
+
+#onglets a { 
+	display : block; 
+	color : blue; 
+	text-decoration : none; 
+	padding : 4px; 
+}
+
+#onglets li.liste{ 
+	background: #fff; 
+	padding-left: 0px; 
+	padding-left:10px; 
+	padding-right:10px; 
+	padding-top:1px; 
+} 
+
+#menucompte { 
+	border-bottom : 2px solid black;
+ 	padding-bottom : 27px; 
+ }
+
+/*____________________________ PROJET : PAGE erreur ________________________________*/ 
+
+#textErreur {
+	text-weight : bold;
+}
+
+/*____________________________ PROJET : PAGE Commandes et Panier (Tableau) ________________________________*/ 
+
+
+.PanierCommande {
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.PanierCommande td{
+	border: 1px solid black;
+}
+
+.PanierCommande th{
+	border: 1px solid black;
+	text-align: center;
+	font-weight : bold;
+}
+
+.tableCentre{
+	text-align: center;
+}
+
+#TableTotal{
+	text-align: right;
+	border: none;
+}
+
+.blocPanier {
+	position : relative;
+	left: 580px;
+	top: 20px; 
+}
+/*____________________________ PROJET : PAGE maliste ________________________________*/ 
+
+.blocMaListe{
+	margin-left: 30px;
+	width: 700px;
+	height: 100px;
+}
+
+.blocIsOffert{
+	position: absolute;
+	margin-left: 550px;
+	margin-top: -45px;
+}
+
+.PosCocheInput{
+	float:left;
+	position: absolute;
+	height: 90px;
+	margin: 10px;
+}
+
+/*______________ FIN DE LA FEUILLE DE STYLES ______________________*/   	
+
+

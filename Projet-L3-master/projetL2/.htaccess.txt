@@ -1,0 +1,12 @@
+ErrorDocument 400 http://localhost:8888/php/erreur.php?erreur=400
+ErrorDocument 401 http://localhost:8888/php/erreur.php?erreur=401
+ErrorDocument 402 http://localhost:8888/php/erreur.php?erreur=402
+ErrorDocument 403 http://localhost:8888/php/erreur.php?erreur=403
+ErrorDocument 404 http://localhost:8888/php/erreur.php?erreur=404
+ErrorDocument 405 http://localhost:8888/php/erreur.php?erreur=405
+ErrorDocument 500 http://localhost:8888/php/erreur.php?erreur=500
+ErrorDocument 501 http://localhost:8888/php/erreur.php?erreur=501
+ErrorDocument 502 http://localhost:8888/php/erreur.php?erreur=502
+ErrorDocument 503 http://localhost:8888/php/erreur.php?erreur=503
+ErrorDocument 504 http://localhost:8888/php/erreur.php?erreur=504
+ErrorDocument 505 http://localhost:8888/php/erreur.php?erreur=505
