@@ -28,8 +28,8 @@ class CenterViewController: UIViewController {
         //ProgressView.shared.showProgressView(view)
         dcd.layer.cornerRadius = 10.0
         dcd.clipsToBounds = true
-        //addUserOrConnextion()
-        //getAgenda(7)
+        addUserOrConnextion()
+        getAgenda(7)
         
         //ProgressView.shared.hideProgressView()
     }
@@ -100,8 +100,8 @@ class CenterViewController: UIViewController {
         var bodyData = "\nDeviceID=\(UUID)"
         println(bodyData)
         
-        let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
-        //let myUrl = NSURL(string: "http://sjepg.2fh.co/php/register-user.php");
+        //let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
+        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/register-user.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
