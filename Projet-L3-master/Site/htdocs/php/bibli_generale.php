@@ -340,7 +340,7 @@ function afficheMiniBarre($page) {
                                 '<ol class="breadcrumb">',
 
                                     '<li class="active">',
-                                        '<i class="fa fa-chart"></i> Page de statistiques',
+                                        '<i class="fa fa-bar-chart"></i> Page de statistiques',
                                     '</li>',
                                 
                                 '</ol>',
