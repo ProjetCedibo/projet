@@ -4,7 +4,7 @@
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
 $page = 'Notifications';
-$err = !empty ($_POST['Notifications']) ? getNotif() : NULL ; 
+$err = !empty ($_POST['Notifications']) ? getNotif() : NULL; 
 
 //ob_start();
 
@@ -52,7 +52,8 @@ afficheMiniBarre($page);
                                 //Zone de texte pour les notifications
                                 '<div class="form-group">',
                                     '<label>Envoyer une nouvelle notification</label>',
-                                    '<textarea name="Notifications" class="form-control" rows="3"></textarea>', 
+                                    '<textarea name="Notifications" class="form-control" rows="3" placeholder="Entrez votre notification ici">',
+                                    '</textarea>', 
                                 '</div>',
 
                                 //Case à cocher sur plusieurs lignes
@@ -148,7 +149,7 @@ afficheMiniBarre($page);
                                 '</div>',*/
 
                                 //Bouton d'envoi
-                                '<button type="submit" class="btn btn-default">Envoi</button>',
+                                '<button type="submit" name = "Envoi" class="btn btn-default">Envoi</button>',
                                 
                                 //Bouton reset
                                 '<button type="reset" class="btn btn-default">Reset</button>',
@@ -259,7 +260,14 @@ afficheMiniBarre($page);
                    
                     echo 'On affiche : '.$_POST['Notifications'];
                     echo $err;
-                  
+                    
+                    //Test si on a quelque chose dans le formulaire
+                    if (isset($_POST['Envoi']) && empty($_POST['Notifications'])) {
+                        echo 'Vous n\'avez pas entré de notifications !'; 
+                    }
+
+
+
 footer();
 
 //$message = $_POST['Notifications'];
