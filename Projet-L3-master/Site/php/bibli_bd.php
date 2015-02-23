@@ -28,7 +28,9 @@ define('BD_NOM', 'sjepg');
 function bd_Connecter() {
     /*$bd = mysqli_connect(BD_SERVEUR, BD_USER, BD_PASS, BD_NOM) or fd_bd_erreur($conn,'Putain ca marche pas');
         return $bd;*/
-    $db = mysql_connect("localhost","root", "root");
+    
+//BD Locale
+    /*$db = mysql_connect("localhost","root", "root");
 
     if (!$db){
         echo "Could not connect to database";
@@ -38,9 +40,10 @@ function bd_Connecter() {
     $db_name = "sjepg";
     if (!mysql_select_db($db_name, $db)){
         die ("Could not select database");
-    }
+    }*/
 
-    /*$db = mysql_connect("mysql.2freehosting.com","u957551264_sjepg", "papuche25");
+//BD hébergeur pourri
+     /*$db = mysql_connect("mysql.2freehosting.com","u957551264_sjepg", "papuche25");
 
     if (!$db){
         echo "Could not connect to database";
@@ -51,6 +54,20 @@ function bd_Connecter() {
     if (!mysql_select_db($db_name, $db)){
         die ("Could not select database");
     }*/
+
+// BD bon hébergeur
+	$db = mysql_connect("sql303.byethost7.com","b7_15906570", "papuche25", "b7_15906570_sjepg");
+
+	    if (!$db){
+	        echo "Could not connect to database";
+	        exit();
+	    }
+
+	    $db_name = "b7_15906570_sjepg";
+	    if (!mysql_select_db($db_name, $db)){
+	        die ("Could not select database");
+	    }
+
 }
 
 //_______________________________________________________________

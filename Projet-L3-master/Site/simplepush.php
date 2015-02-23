@@ -7,7 +7,7 @@ $deviceToken = 'e943c9e9c0c8a1ab0ca82b62c5dd626920f33f6ec664a02d8ac81b7d852b0dda
 $passphrase = 'cedibo';
 
 // Put your alert message here:
-$message = 'Coucou Monsieur Lang !';
+$message = 'Me reçois-tu Petet ?';
 
 ////////////////////////////////////////////////////////////////////////////////
 
