@@ -4,7 +4,7 @@
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
 $page = 'Agenda';
-//!empty ($_POST['Agenda']) ? getNotif() : NULL ; 
+//!empty ($_POST['typeAgenda']) //? getNotif() : NULL ; 
 
 //ob_start();
 
@@ -16,8 +16,25 @@ afficheMiniBarre($page);
 
 
 //ob_end_flush();
+            
+    //echo
+                  //  'Nous sommes le '.date('d-m-Y-e à H:i:s').'',
+                    
+                      /*  $date = new DateTime('2000-01-01', new DateTimeZone('Pacific/Nauru'));
+                       echo $date->format('Y-m-d H:i:sP') . "\n";*/
 
-    echo
+                        /*$date=setTimezone(new DateTimeZone('Pacific/Chatham'));
+                        echo $date->format('Y-m-d H:i:sP') . "\n";*/
+
+                        date_default_timezone_set("Europe/Paris");
+                  echo      'Nous sommes le '.date('d-m-Y à H:i:s').''; 
+
+
+
+
+
+
+echo
                     '<div class="row">',
                             
                         '<div class="col-lg-6">',
@@ -49,7 +66,7 @@ afficheMiniBarre($page);
                                     '<input type="file">',
                                 '</div>', */
 
-                                //Zone de texte pour les notifications
+                                //Zone de texte pour l'agenda
                                 '<div class="form-group">',
                                     '<label>Faire une nouvelle entrée dans l\'agenda </label>',
                                     '<textarea name="AgendaText" class="form-control" rows="3"></textarea>', 
@@ -90,24 +107,26 @@ afficheMiniBarre($page);
                                 '</div>',*/
 
                                 //Boutons radio sur plusieurs lignes
-                               /*'<div class="form-group">',
-                                    '<label>Radio Buttons</label>',
+                               '<div class="form-group">',
+                                    '<label> Type d\'informations </label>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Radio 1',
+                                            '<input type="radio" name="typeAgenda" id="GENERAL" value="GENERAL" checked>GENERAL',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Radio 2',
+                                            '<input type="radio" name="typeAgenda" id="BU" value="BU">BU',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Radio 3',
+                                            '<input type="radio" name="typeAgenda" id="SJEPG" value="SJEPG">SJEPG',
                                         '</label>',
                                     '</div>',
-                                '</div>',*/
+                                '</div>',
+
+                                
 
                                  //Cases à cocher sur une seule ligne
                                  /*'<div class="form-group">',
@@ -257,8 +276,8 @@ afficheMiniBarre($page);
                     //<!-- /.row --> 
                     
                    
-                    echo 'On affiche : '.$_POST['AgendaText'];
-
+                    echo 'On affiche : '.$_POST['AgendaText'],
+                         '<br>On affiche aussi : ' .$_POST['typeAgenda'];
                   
 footer();
 

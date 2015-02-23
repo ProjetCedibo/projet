@@ -4,7 +4,7 @@
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
 $page = 'Notifications';
-!empty ($_POST['Notifications']) ? getNotif() : NULL ; 
+$err = !empty ($_POST['Notifications']) ? getNotif() : NULL ; 
 
 //ob_start();
 
@@ -258,9 +258,11 @@ afficheMiniBarre($page);
                     
                    
                     echo 'On affiche : '.$_POST['Notifications'];
-
+                    echo $err;
                   
 footer();
+
+//$message = $_POST['Notifications'];
 
 function getNotif() {
     bd_Connecter();
@@ -269,20 +271,25 @@ function getNotif() {
     $sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
     $res =mysql_query($sql);
     mysql_close();
-    //send_notif($message);
+    return sendNotif($message);
 }
 
 
-function sendNotif() {
+function sendNotif($message) {
+$err2='';
+bd_Connecter(); 
+$sql = "SELECT `NotifSubscribersToken` FROM `NotifSubscribers`"; 
+$res =mysql_query($sql); 
+$r=mysql_fetch_row($res);
 
 // Put your device token here (without spaces):
-$deviceToken = 'e943c9e9c0c8a1ab0ca82b62c5dd626920f33f6ec664a02d8ac81b7d852b0dda';
+//$deviceToken = 'e943c9e9c0c8a1ab0ca82b62c5dd626920f33f6ec664a02d8ac81b7d852b0dda';
 
 // Put your private key's passphrase here:
 $passphrase = 'cedibo';
 
 // Put your alert message here:
-$message = $_POST['Notifications'];
+//$message = $_POST['Notifications'];
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -301,27 +308,32 @@ if (!$fp)
 echo 'Connected to APNS' . PHP_EOL;
 
 // Create the payload body
-$body['aps'] = array('badge' => 1, 'alert' => $message,  'sound' => 'default');
+$body['aps'] = array('badge' => "+1", 'alert' => $message,  'sound' => 'default');
 
 // Encode the payload as JSON
 $payload = json_encode($body);
 
 // Build the binary notification
-$msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+foreach($r as $deviceToken) {
 
-// Send it to the server
-$result = fwrite($fp, $msg, strlen($msg));
+    $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+    
+    // Send it to the server
+
+    $result = fwrite($fp, $msg, strlen($msg));
+}
+
 
 if (!$result)
-    echo 'Message not delivered' . PHP_EOL;
+    $err2 = $err2 . 'La notification n\'a pas été reçue' . PHP_EOL;
 else
-    echo 'Message successfully delivered' . PHP_EOL;
+    $err2 = $err2 .  '<br> La notification a bien été envoyée !' . PHP_EOL;
 
 // Close the connection to the server
 fclose($fp);
-
+return $err2;
 }
 
-sendNotif();
+//sendNotif();
 
 ?>
