@@ -3,8 +3,8 @@
 //session_start();
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
-$page = 'Notifications';
-!empty ($_POST['Notifications']) ? getNotif() : NULL ; 
+$page = 'Agenda';
+//!empty ($_POST['Agenda']) ? getNotif() : NULL ; 
 
 //ob_start();
 
@@ -22,7 +22,7 @@ afficheMiniBarre($page);
                             
                         '<div class="col-lg-6">',
 
-                            '<form method="post" action="notifications.php" role="form">',
+                            '<form method="post" action="agenda.php" role="form">',
 
                                 //Petite Zone de texte
                                 /*'<div class="form-group">',
@@ -51,8 +51,8 @@ afficheMiniBarre($page);
 
                                 //Zone de texte pour les notifications
                                 '<div class="form-group">',
-                                    '<label>Envoyer une nouvelle notification</label>',
-                                    '<textarea name="Notifications" class="form-control" rows="3"></textarea>', 
+                                    '<label>Faire une nouvelle entrée dans l\'agenda </label>',
+                                    '<textarea name="AgendaText" class="form-control" rows="3"></textarea>', 
                                 '</div>',
 
                                 //Case à cocher sur plusieurs lignes
@@ -257,23 +257,23 @@ afficheMiniBarre($page);
                     //<!-- /.row --> 
                     
                    
-                    echo 'On affiche : '.$_POST['Notifications'];
+                    echo 'On affiche : '.$_POST['AgendaText'];
 
                   
 footer();
 
-function getNotif() {
+/*function getNotif() {
     bd_Connecter();
-    $message = $_POST['Notifications'];
+    $message = $_POST['Agenda'];
     $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-    $sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
+    $sql = "INSERT INTO `Agenda`(`AgendaId`, `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])";
     $res =mysql_query($sql);
     mysql_close();
     //send_notif($message);
-}
+}*/
 
 
-function sendNotif() {
+/*function sendNotif() {
 
 // Put your device token here (without spaces):
 $deviceToken = 'e943c9e9c0c8a1ab0ca82b62c5dd626920f33f6ec664a02d8ac81b7d852b0dda';
@@ -282,7 +282,7 @@ $deviceToken = 'e943c9e9c0c8a1ab0ca82b62c5dd626920f33f6ec664a02d8ac81b7d852b0dda
 $passphrase = 'cedibo';
 
 // Put your alert message here:
-$message = $_POST['Notifications'];
+$message = $_POST['Agenda'];
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -322,6 +322,6 @@ fclose($fp);
 
 }
 
-sendNotif();
+sendNotif();*/
 
 ?>
