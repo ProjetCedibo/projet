@@ -1,15 +1,24 @@
 <?php
 
 //session_start();
-
+include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
-
+isset($_POST[$page]) ? getNotif() : NULL ; 
 //ob_start();
 $page = 'Notifications';
 afficheHeader($page);
 afficheBarreHaute();
 afficheBarreGauche($page);
 afficheMiniBarre($page);
+
+function getNotif($message) {
+bd_Connecter();
+$admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
+$sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
+$res =mysql_query($sql);
+mysql_close();
+}
+
 //ob_end_flush();
 
     echo
@@ -17,7 +26,7 @@ afficheMiniBarre($page);
                             
                         '<div class="col-lg-6">',
 
-                            '<form role="form">',
+                            '<form method="post" action="notifications.php" role="form">',
 
                                 //Petite Zone de texte
                                 /*'<div class="form-group">',
@@ -47,7 +56,7 @@ afficheMiniBarre($page);
                                 //Zone de texte pour les notifications
                                 '<div class="form-group">',
                                     '<label>Envoyer une nouvelle notification</label>',
-                                    '<textarea class="form-control" rows="3"></textarea>',
+                                    '<textarea name="Notifications" class="form-control" rows="3"></textarea>', 
                                 '</div>',
 
                                 //Case à cocher sur plusieurs lignes
@@ -250,6 +259,28 @@ afficheMiniBarre($page);
                     
                     '</div>';
                     //<!-- /.row --> 
+                    
+                    $message = $_POST[$page];
+
+                        getNotif($message);
+
+                    if (isset($_POST[$page])) {
+
+                        echo '<br> On affiche numéro 2 : '.$_POST[$page];
+                    }
+
+
+                  
+
+
+               
+
+
+
+
+
+
+
 
 footer();
 
