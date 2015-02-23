@@ -3,21 +3,17 @@
 //session_start();
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
-isset($_POST[$page]) ? getNotif() : NULL ; 
-//ob_start();
 $page = 'Notifications';
+!empty ($_POST['Notifications']) ? getNotif() : NULL ; 
+
+//ob_start();
+
 afficheHeader($page);
 afficheBarreHaute();
 afficheBarreGauche($page);
 afficheMiniBarre($page);
 
-function getNotif($message) {
-bd_Connecter();
-$admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-$sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
-$res =mysql_query($sql);
-mysql_close();
-}
+
 
 //ob_end_flush();
 
@@ -260,14 +256,7 @@ mysql_close();
                     '</div>';
                     //<!-- /.row --> 
                     
-                    $message = $_POST[$page];
-
-                        getNotif($message);
-
-                    if (isset($_POST[$page])) {
-
-                        echo '<br> On affiche numéro 2 : '.$_POST[$page];
-                    }
+                   
 
 
                   
@@ -284,6 +273,16 @@ mysql_close();
 
 footer();
 
+function getNotif() {
+bd_Connecter();
+$message = $_POST['Notifications'];
+$admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
+$sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
+$res =mysql_query($sql);
+mysql_close();
+
+
+}
 
 function send_notif(){
     
