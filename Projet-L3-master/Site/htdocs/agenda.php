@@ -8,7 +8,7 @@ $page = 'Agenda';
 
 //ob_start();
 
-afficheHeader($page);
+afficheHeaderAgenda($page);
 afficheBarreHaute();
 afficheBarreGauche($page);
 afficheMiniBarre($page);
@@ -27,7 +27,7 @@ afficheMiniBarre($page);
                         echo $date->format('Y-m-d H:i:sP') . "\n";*/
 
                         date_default_timezone_set("Europe/Paris");
-                  echo      'Nous sommes le '.date('d-m-Y à H:i:s').''; 
+                  echo      'Nous sommes le '.date('d-m-Y à H:i:s').' et le numéro de la semaine est '.date('W').'  .'; 
 
 
 

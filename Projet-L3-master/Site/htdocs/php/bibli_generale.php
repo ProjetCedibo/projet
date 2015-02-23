@@ -68,6 +68,102 @@ echo
 '</head>';
 }
 
+function afficheHeaderAgenda($titre) {
+
+echo
+
+'<!DOCTYPE html>', 
+'<html lang="fr">',
+
+
+'<head>',
+
+    '<meta charset="utf-8">',
+    '<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1">',
+    '<meta name="description" content="">',
+    '<meta name="author" content="">',
+
+    '<title>' .$titre. '</title>',
+
+    '<!-- Bootstrap Core CSS -->',
+    '<link href="css/bootstrap.min.css" rel="stylesheet">',
+
+    '<!-- Custom CSS -->',
+    '<link href="css/sb-admin.css" rel="stylesheet">',
+
+    '<!-- Morris Charts CSS -->',
+    '<link href="css/plugins/morris.css" rel="stylesheet">',
+
+    '<!-- Custom Fonts -->',
+    '<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">',
+
+    //'<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->',
+    //'<!-- WARNING: Respond.js doesnt work if you view the page via file: -->',
+    '<!--[if lt IE 9]>',
+        '<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>',
+        '<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>',
+    '<![endif]-->',
+
+'<style>',
+
+     '.ds_box {',
+        'background-color: #FFF;',
+        'border: 1px solid #000;',
+        'position: absolute;',
+        'z-index: 32767;',
+    '}', 
+
+     '.ds_tbl {',
+        'background-color: #FFF;',
+    '}', 
+
+   
+     '.ds_head {',
+        'background-color: #333;',
+        'color: #FFF;',
+        'font-family: Arial, Helvetica, sans-serif;',
+        'font-size: 13px;',
+        'font-weight: bold;',
+        'text-align: center;',
+        'letter-spacing: 2px;',
+    '}', 
+
+    '.ds_subhead {',
+        'background-color: #CCC;',
+        'color: #000;',
+        'font-size: 12px;',
+        'font-weight: bold;',
+        'text-align: center;',
+        'font-family: Arial, Helvetica, sans-serif;',
+        'width: 32px;',
+    '}', 
+
+    '.ds_cell {',
+        'background-color: #EEE;',
+        'color: #000;',
+        'font-size: 13px;',
+        'text-align: center;',
+        'font-family: Arial, Helvetica, sans-serif;',
+        'padding: 5px;',
+        'cursor: pointer;',
+    '}', 
+
+    '.ds_cell:hover {',
+        'background-color: #F3F3F3;', 
+    '}', 
+
+    '</style>',
+
+
+'</head>';
+
+
+}
+
+
+
+
 
 
 function afficheBarreHaute () {
