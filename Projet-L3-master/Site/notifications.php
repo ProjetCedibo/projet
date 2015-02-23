@@ -274,18 +274,67 @@ afficheMiniBarre($page);
 footer();
 
 function getNotif() {
-bd_Connecter();
-$message = $_POST['Notifications'];
-$admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-$sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
-$res =mysql_query($sql);
-mysql_close();
-
-
+    bd_Connecter();
+    $message = $_POST['Notifications'];
+    $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
+    $sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
+    $res =mysql_query($sql);
+    mysql_close();
+    send_notif($message);
 }
 
-function send_notif(){
-    
+function send_notif($message){
+    bd_Connecter();
+    $sql = "SELECT `NotifSubscribersToken` FROM `NotifSubscribers`";
+    $res =mysql_query($sql);
+    $r=mysql_fetch_row($res);
+
+
+        $deviceToken = $r[0];
+
+        // Put your private key's passphrase here:
+        $passphrase = 'cedibo';
+
+        // Put your alert message here:
+        //$message = 'Coucou Monsieur Lang !';
+
+        ////////////////////////////////////////////////////////////////////////////////
+
+        $ctx = stream_context_create();
+        stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
+        stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
+
+        // Open a connection to the APNS server
+        $fp = stream_socket_client(
+            'ssl://gateway.sandbox.push.apple.com:2195', $err,
+            $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+
+        if (!$fp)
+            exit("Failed to connect: $err $errstr" . PHP_EOL);
+
+        echo 'Connected to APNS' . PHP_EOL;
+
+        // Create the payload body
+        $body['aps'] = array('badge' => +1, 'alert' => $message, 'sound' => 'default');
+
+        // Encode the payload as JSON
+        $payload = json_encode($body);
+
+        // Build the binary notification
+        $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+
+        // Send it to the server
+        $result = fwrite($fp, $msg, strlen($msg));
+
+        if (!$result)
+            echo 'Message not delivered' . PHP_EOL;
+        else
+            echo 'Message successfully delivered' . PHP_EOL;
+
+        // Close the connection to the server
+        fclose($fp);
+
+    mysql_close();   
 }
 
 
