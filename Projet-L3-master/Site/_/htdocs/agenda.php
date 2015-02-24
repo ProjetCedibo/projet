@@ -268,8 +268,8 @@ function ds_format_date(d, m, y) {
     d2 = '00' + d;
     d2 = d2.substr(d2.length - 2);
     // YYYY-MM-DD
-//  return y + '-' + m2 + '-' + d2;
-    return d2 + '-' + m2 + '-' + y;
+     return y + '-' + m2 + '-' + d2;
+  // return d2 + '-' + m2 + '-' + y;
 }
 
 // When the user clicks the day.
@@ -330,8 +330,9 @@ function ds_onclick(d, m, y) {
                             '<form method="post" action="agenda.php" role="form">',
 
                                 '<div class="form-group">',
-                                    '<br> <b>Sélectionnez la date de l\'évènement : </b><br/>',
-                                    'Veuillez entrez une date : <input onclick="ds_sh(this);" name="AgendaDate" readonly="readonly" style="cursor:text" /><br />',
+                                    '<br> <b>Sélectionnez la date de l\'événement : </b><br/>',
+                                    'Veuillez entrez une date : ',
+                                    '<input onclick="ds_sh(this);" name="AgendaDate" readonly="readonly" style="cursor:text" /><br />',
                                     '<p class="help-block">Cliquez sur la zone ci-dessus pour choisir une date</p>',
                                 '</div>',
                                 
