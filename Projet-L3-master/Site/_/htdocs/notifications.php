@@ -52,7 +52,7 @@ afficheMiniBarre($page);
                                 //Zone de texte pour les notifications
                                 '<div class="form-group">',
                                     '<label>Envoyer une nouvelle notification</label>',
-                                    '<textarea name="Notifications" class="form-control" rows="3" placeholder="Entrez votre notification ici">',
+                                    '<textarea name="Notifications" class="form-control" rows="3" placeholder="Tapez ici">',
                                     '</textarea>', 
                                 '</div>',
 
@@ -316,7 +316,7 @@ if (!$fp)
 echo 'Connected to APNS' . PHP_EOL;
 
 // Create the payload body
-$body['aps'] = array('badge' => "+1", 'alert' => $message,  'sound' => 'default');
+$body['aps'] = array('badge' => 1, 'alert' => $message,  'sound' => 'default');
 
 // Encode the payload as JSON
 $payload = json_encode($body);

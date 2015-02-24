@@ -4,7 +4,19 @@
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
 $page = 'Agenda';
-//!empty ($_POST['typeAgenda']) //? getNotif() : NULL ; 
+//!empty ($_POST['AgendaType']) ? sendData() : NULL ; 
+
+
+if ( (!empty ($_POST['AgendaDate'])) && (!empty ($_POST['AgendaTitle'])) && (!empty ($_POST['AgendaMessage'])) ) {
+    sendData();
+}
+else {
+    NULL;
+}
+
+
+
+
 
 //ob_start();
 
@@ -318,15 +330,16 @@ function ds_onclick(d, m, y) {
                             '<form method="post" action="agenda.php" role="form">',
 
                                 '<div class="form-group">',
-                                    '<br> <b>Sélectionner la date de l\'évènement : </b><br/>',
-                                    'Veuillez entrez une date : <input onclick="ds_sh(this);" name="date" readonly="readonly" style="cursor: text" /><br />',
+                                    '<br> <b>Sélectionnez la date de l\'évènement : </b><br/>',
+                                    'Veuillez entrez une date : <input onclick="ds_sh(this);" name="AgendaDate" readonly="readonly" style="cursor:text" /><br />',
+                                    '<p class="help-block">Cliquez sur la zone ci-dessus pour choisir une date</p>',
                                 '</div>',
+                                
                                 //Petite Zone de texte
-                                /*'<div class="form-group">',
-                                    '<label>Text Input</label>',
-                                    '<input class="form-control">',
-                                    '<p class="help-block">Example block-level help text here.</p>',
-                                '</div>', */
+                                '<div class="form-group">',
+                                    '<label>Entrer un titre pour l\'événement : </label>',
+                                    '<input name="AgendaTitle" class="form-control" placeholder="Tapez ici">',
+                                '</div>', 
 
                                 //Zone de texte avec text préécrit
                                 /*'<div class="form-group">',
@@ -348,8 +361,8 @@ function ds_onclick(d, m, y) {
 
                                 //Zone de texte pour l'agenda
                                 '<div class="form-group">',
-                                    '<label>Faire une nouvelle entrée dans l\'agenda </label>',
-                                    '<textarea name="AgendaText" class="form-control" rows="3"></textarea>', 
+                                    '<label>Ecrivez le contenu de l\'événement  : </label>',
+                                    '<textarea placeholder="Tapez ici" name="AgendaMessage" class="form-control" rows="3"></textarea>', 
                                 '</div>',
 
                                 //Case à cocher sur plusieurs lignes
@@ -388,20 +401,20 @@ function ds_onclick(d, m, y) {
 
                                 //Boutons radio sur plusieurs lignes
                                '<div class="form-group">',
-                                    '<label> Type d\'informations </label>',
+                                    '<label> Type d\'informations : </label>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="typeAgenda" id="GENERAL" value="GENERAL" checked>GENERAL',
+                                            '<input type="radio" name="AgendaType" id="GENERAL" value="GENERAL" checked>GENERAL',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="typeAgenda" id="BU" value="BU">BU',
+                                            '<input type="radio" name="AgendaType" id="BU" value="BU">BU',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="typeAgenda" id="SJEPG" value="SJEPG">SJEPG',
+                                            '<input type="radio" name="AgendaType" id="SJEPG" value="SJEPG">SJEPG',
                                         '</label>',
                                     '</div>',
                                 '</div>',
@@ -447,7 +460,7 @@ function ds_onclick(d, m, y) {
                                 '</div>',*/
 
                                 //Bouton d'envoi
-                                '<button type="submit" class="btn btn-default">Envoi</button>',
+                                '<button type="submit" name ="Envoi" class="btn btn-default">Envoi</button>',
                                 
                                 //Bouton reset
                                 '<button type="reset" class="btn btn-default">Reset</button>',
@@ -556,20 +569,50 @@ function ds_onclick(d, m, y) {
                     //<!-- /.row --> 
                     
                    
-                    echo 'On affiche : '.$_POST['AgendaText'],
-                         '<br>On affiche aussi : ' .$_POST['typeAgenda'],
-                         '<br>On affiche enfin : ' .$_POST['date']; 
+                    echo 'On affiche : '.$_POST['AgendaMessage'],
+                         '<br>On affiche aussi : ' .$_POST['AgendaType'],
+                         '<br>On affiche enfin : ' .$_POST['AgendaDate']; 
+
+                        //Test si on a rempli quelque chose pour le champ titre
+                    if (isset($_POST['Envoi']) && empty($_POST['AgendaTitle']) /*&& !empty($_POST['AgendaType'])*/) {
+                        echo '<br>Vous n\'avez pas entré de titre pour l\'agenda !'; 
+                    }
+
+                        //Test si on a rempli quelque chose pour le champ date
+                    if (isset($_POST['Envoi']) && empty($_POST['AgendaDate']) /*&& !empty($_POST['AgendaType'])*/)  {
+                        echo '<br>Vous n\'avez pas sélectionné de date !';
+                    }
+                        //Test si on a rempli quelque chose pour le formulaire du de l'agenda
+                    if (isset($_POST['Envoi']) && empty($_POST['AgendaMessage']) /*&& !empty($_POST['AgendaType'])*/) {
+                        echo '<br>Vous n\'avez pas entré de contenu pour l\'agenda !'; 
+                    }
+                    
+
+
+
 footer();
 
-/*function getNotif() {
+function sendData() {
     bd_Connecter();
-    $message = $_POST['Agenda'];
+    $AgendaDate = $_POST['AgendaDate']; // '".$AgendaDate."'
+    $AgendaTitle = $_POST['AgendaTitle']; // '".$AgendaTitle."'
+    $AgendaMessage = $_POST['AgendaMessage']; // '".$AgendaMessage."'
+    $AgendaType = $_POST['AgendaType']; // '".$AgendaType."'
+
+    //A modifier
+    $AgendaWeek = 25; // '".$AgendaWeek."'
+    $AgendaAuthor = 1; // '".$AgendaAuthor."'
+
+    // concaténation : '".$message."' 
     $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-    $sql = "INSERT INTO `Agenda`(`AgendaId`, `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])";
+    
+    $sql = "INSERT INTO `Agenda`(`AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ('".$AgendaDate."','".$AgendaWeek."','".$AgendaTitle."','".$AgendaMessage."','".$AgendaType."','".$AgendaAuthor."')";
+    
     $res =mysql_query($sql);
+    
     mysql_close();
     //send_notif($message);
-}*/
+}
 
 
 /*function sendNotif() {
