@@ -309,7 +309,14 @@ function ds_onclick(d, m, y) {
 
     date_default_timezone_set("Europe/Paris");
     
-    echo      'Nous sommes le '.date('d-m-Y à H:i:s').' et le numéro de la semaine est '.date('W').'  .',
+    echo      'Nous sommes le '.date('d-m-Y à H:i:s').' et le numéro de la semaine est '.date('W').'  .';
+               
+
+
+/*$date_string = "2015-01-01";
+echo "<br>Weeknummer: " . date("W", strtotime($date_string)),*/
+
+
                /* '<form action="" method="post">',
                 '<div>',
                 '<b>Sélectionner la date qui correspond à la semaine </b><br/>',
@@ -322,7 +329,7 @@ function ds_onclick(d, m, y) {
 
 
 
-
+echo
                     '<div class="row">',
                             
                         '<div class="col-lg-6">',
@@ -596,17 +603,20 @@ footer();
 function sendData() {
     bd_Connecter();
     $AgendaDate = $_POST['AgendaDate']; // '".$AgendaDate."'
+    
+    //obtention de la semaine correspondante à la date sélectionnée
+    $date_string = $_POST['AgendaDate'];
+    $AgendaWeek = date("W", strtotime($date_string));
+
     $AgendaTitle = $_POST['AgendaTitle']; // '".$AgendaTitle."'
     $AgendaMessage = $_POST['AgendaMessage']; // '".$AgendaMessage."'
     $AgendaType = $_POST['AgendaType']; // '".$AgendaType."'
+    $AgendaAuthor = isset($_SESSION['id']) ? $_SESSION['id'] : 1; // '".$AgendaAuthor."'
 
-    //A modifier
-    $AgendaWeek = 25; // '".$AgendaWeek."'
-    $AgendaAuthor = 1; // '".$AgendaAuthor."'
+
 
     // concaténation : '".$message."' 
-    $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-    
+      
     $sql = "INSERT INTO `Agenda`(`AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ('".$AgendaDate."','".$AgendaWeek."','".$AgendaTitle."','".$AgendaMessage."','".$AgendaType."','".$AgendaAuthor."')";
     
     $res =mysql_query($sql);
