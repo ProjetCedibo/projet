@@ -21,7 +21,7 @@ afficheMiniBarre($page);
     echo
                     '<div class="row">',
                             
-                        '<div class="col-lg-6">',
+                        '<div class="formulaireCentre">',
 
                             '<form method="post" action="notifications.php" role="form">',
 
@@ -45,13 +45,13 @@ afficheMiniBarre($page);
                         '</div>',
                         
                         //Formlaires désactivés
-                       '<div class="col-lg-6">';
+                       '<div class="formulaireCentre">';
                               
 
                         //Tableau sans différence de couleur
                             //La requête SELECT `NotificationID`, `NotifiactionText`, `AdminID` FROM `Notification`
 
-                            afficheTableau();
+                            historiqueNotif();
                 
                    
 
@@ -82,7 +82,7 @@ footer();
 
 
 
-function afficheTableau() {
+function historiqueNotif() {
 bd_Connecter();
 $sql = "SELECT `NotificationID`, `NotifiactionText`, `AdminID` FROM `Notification` ORDER BY `Notification`.`NotificationID` DESC ";
 $res =mysql_query($sql);
@@ -99,13 +99,13 @@ echo                    '<h2>Historique des dernières notifications</h2>',
                                         '<th>Admin </th>',
                                     '</tr>',
                                 '</thead>',
-                                '<tbody>';
+                                '<tbody>'; 
 
 /*if ($histo<=0) {
 echo '<br>Pas de résultat';
 }
 else { */
-    $compteur = 0;
+   $compteur = 0;
     while ($histo=mysql_fetch_array($res)) {
        $compteur+=1;
        $NotificationID = $histo['NotificationID'];
@@ -158,6 +158,7 @@ function getNotif() {
     $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
     $sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
     $res =mysql_query($sql);
+    header('Location: notifications.php');
     mysql_close();
     return sendNotif($message);
 }
@@ -197,8 +198,8 @@ if (!$fp)
 
 /*
 $lightning = html_entity_decode('&#57661;',ENT_NOQUOTES,'UTF-8');
-//add this to the 'alert' portion of your APNS payload:
-$test= "You just got the {$lightning}SHOCKER{$lightning}!"; */
+//add this to the 'alert' portion of your APNS payload:*/
+//$test= "You just got the {$lightning}SHOCKER{$lightning}!"; */
 
 // Create the payload body
 $body['aps'] = array('badge' => 1, 'alert' => $message,  'sound' => 'default');
