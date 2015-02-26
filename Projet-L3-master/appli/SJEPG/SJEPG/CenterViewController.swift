@@ -36,8 +36,8 @@ class CenterViewController: UIViewController {
     
     func getAgenda(week: Int){
         
-        let myURL = NSURL(string: "http://localhost:8888/php/getAgenda.php")!
-        //let myURL = NSURL(string: "http://sjepg.2fh.co/php/getAgenda.php")!
+        //let myURL = NSURL(string: "http://localhost:8888/php/getAgenda.php")!
+        let myURL = NSURL(string: "http://sjepg.byethost7.com/php/getAgenda.php")!
         let request = NSMutableURLRequest(URL: myURL)
         request.HTTPMethod = "POST"
         
@@ -101,7 +101,7 @@ class CenterViewController: UIViewController {
         println(bodyData)
         
         //let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
-        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/register-user.php");
+        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/register-user.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
@@ -134,6 +134,7 @@ class CenterViewController: UIViewController {
     }
     
     // MARK: Button actions
+    
     
     @IBAction func ShowLeftMenu(sender: AnyObject) {
         delegate?.toggleLeftPanel?()

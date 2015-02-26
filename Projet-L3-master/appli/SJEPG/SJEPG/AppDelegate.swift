@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
         var device = UIDevice.currentDevice().model
         
-        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/notif.php");
+        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/notif.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
