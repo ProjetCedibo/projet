@@ -4,7 +4,19 @@
 include 'php/bibli_bd.php';
 include 'php/bibli_generale.php';
 $page = 'Agenda';
-//!empty ($_POST['typeAgenda']) //? getNotif() : NULL ; 
+//!empty ($_POST['AgendaType']) ? sendData() : NULL ; 
+
+
+if ( (!empty ($_POST['AgendaDate'])) && (!empty ($_POST['AgendaTitle'])) && (!empty ($_POST['AgendaMessage'])) ) {
+    sendData();
+}
+else {
+    NULL;
+}
+
+isset ($_POST['PETET']) ? deleteAgenda() : NULL ;
+
+
 
 //ob_start();
 
@@ -256,8 +268,8 @@ function ds_format_date(d, m, y) {
     d2 = '00' + d;
     d2 = d2.substr(d2.length - 2);
     // YYYY-MM-DD
-//  return y + '-' + m2 + '-' + d2;
-    return d2 + '-' + m2 + '-' + y;
+     return y + '-' + m2 + '-' + d2;
+  // return d2 + '-' + m2 + '-' + y;
 }
 
 // When the user clicks the day.
@@ -277,8 +289,12 @@ function ds_onclick(d, m, y) {
 }
 
 // And here is the end.
-
 // ]]> -->
+
+function emptyField() {
+alert('Message d\'alerte \n Vous n\'avez pas rempli ce champ');
+}
+
 </script>
 
 <?php
@@ -297,7 +313,14 @@ function ds_onclick(d, m, y) {
 
     date_default_timezone_set("Europe/Paris");
     
-    echo      'Nous sommes le '.date('d-m-Y à H:i:s').' et le numéro de la semaine est '.date('W').'  .',
+    echo      'Nous sommes le '.date('d-m-Y à H:i:s').' et le numéro de la semaine est '.date('W').'  .';
+               
+
+
+/*$date_string = "2015-01-01";
+echo "<br>Weeknummer: " . date("W", strtotime($date_string)),*/
+
+
                /* '<form action="" method="post">',
                 '<div>',
                 '<b>Sélectionner la date qui correspond à la semaine </b><br/>',
@@ -310,266 +333,441 @@ function ds_onclick(d, m, y) {
 
 
 
+echo
+    '<div class="row">',
 
-                    '<div class="row">',
-                            
-                        '<div class="col-lg-6">',
+        '<div class="formulaireCentre">',
 
-                            '<form method="post" action="agenda.php" role="form">',
+            '<form method="post" action="agenda.php" role="form">',
 
-                                '<div class="form-group">',
-                                    '<br> <b>Sélectionner la date de l\'évènement : </b><br/>',
-                                    'Veuillez entrez une date : <input onclick="ds_sh(this);" name="date" readonly="readonly" style="cursor: text" /><br />',
-                                '</div>',
-                                //Petite Zone de texte
-                                /*'<div class="form-group">',
-                                    '<label>Text Input</label>',
-                                    '<input class="form-control">',
-                                    '<p class="help-block">Example block-level help text here.</p>',
-                                '</div>', */
+                '<div class="form-group">',
+                    '<br> <b>Sélectionnez la date de l\'événement : </b><br/>',
+                    'Veuillez entrez une date : ',
+                    '<input onclick="ds_sh(this);" name="AgendaDate" readonly="readonly" style="cursor:text" /><br />',
+                    '<p class="help-block">Cliquez sur la zone ci-dessus pour choisir une date</p>',
+                '</div>',
 
-                                //Zone de texte avec text préécrit
-                                /*'<div class="form-group">',
-                                    '<label>Text Input with Placeholder</label>',
-                                    '<input class="form-control" placeholder="Enter text">',
-                                '</div>',*/
+                //Petite Zone de texte
+                '<div class="form-group">',
+                    '<label>Entrer un titre pour l\'événement : </label>',
+                    '<input name="AgendaTitle" class="form-control" placeholder="Tapez ici">',
+                '</div>', 
 
-                                //Mail 
-                                /*'<div class="form-group">',
-                                    '<label>Static Control</label>',
-                                    '<p class="form-control-static">email@example.com</p>',
-                                '</div>',*/
+                //Zone de texte pour l'agenda
+                '<div class="form-group">',
+                    '<label>Ecrivez le contenu de l\'événement  : </label>',
+                    '<textarea placeholder="Tapez ici" name="AgendaMessage" class="form-control" rows="3"></textarea>', 
+                '</div>',
 
-                                //Uploader de fichier
-                                /*'<div class="form-group">',
-                                    '<label>File input</label>',
-                                    '<input type="file">',
-                                '</div>', */
-
-                                //Zone de texte pour l'agenda
-                                '<div class="form-group">',
-                                    '<label>Faire une nouvelle entrée dans l\'agenda </label>',
-                                    '<textarea name="AgendaText" class="form-control" rows="3"></textarea>', 
-                                '</div>',
-
-                                //Case à cocher sur plusieurs lignes
-                                /*'<div class="form-group">',
-                                    '<label>Checkboxes</label>',
-                                    '<div class="checkbox">',
-                                        '<label>',
-                                            '<input type="checkbox" value="">Checkbox 1',
-                                        '</label>',
-                                    '</div>',
-                                    '<div class="checkbox">',
-                                        '<label>',
-                                            '<input type="checkbox" value="">Checkbox 2',
-                                        '</label>',
-                                    '</div>',
-                                    '<div class="checkbox">',
-                                        '<label>',
-                                            '<input type="checkbox" value="">Checkbox 3',
-                                        '</label>',
-                                    '</div>',
-                                '</div>',*/
-
-                                //Cases à cocher sur une seule ligne
-                                /*'<div class="form-group">',
-                                    '<label>Inline Checkboxes</label>',
-                                    '<label class="checkbox-inline">',
-                                        '<input type="checkbox">1',
-                                    '</label>',
-                                    '<label class="checkbox-inline">',
-                                       ' <input type="checkbox">2',
-                                    '</label>',
-                                    '<label class="checkbox-inline">',
-                                        '<input type="checkbox">3',
-                                    '</label>',
-                                '</div>',*/
-
-                                //Boutons radio sur plusieurs lignes
-                               '<div class="form-group">',
-                                    '<label> Type d\'informations </label>',
-                                    '<div class="radio">',
-                                        '<label>',
-                                            '<input type="radio" name="typeAgenda" id="GENERAL" value="GENERAL" checked>GENERAL',
-                                        '</label>',
-                                    '</div>',
-                                    '<div class="radio">',
-                                        '<label>',
-                                            '<input type="radio" name="typeAgenda" id="BU" value="BU">BU',
-                                        '</label>',
-                                    '</div>',
-                                    '<div class="radio">',
-                                        '<label>',
-                                            '<input type="radio" name="typeAgenda" id="SJEPG" value="SJEPG">SJEPG',
-                                        '</label>',
-                                    '</div>',
-                                '</div>',
-
-                                
-
-                                 //Cases à cocher sur une seule ligne
-                                 /*'<div class="form-group">',
-                                    '<label>Inline Radio Buttons</label>',
-                                    '<label class="radio-inline">',
-                                        '<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1',
-                                    '</label>',
-                                    '<label class="radio-inline">',
-                                        '<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2',
-                                    '</label>',
-                                    '<label class="radio-inline">',
-                                        '<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3',
-                                    '</label>',
-                                '</div>',*/
-
-                                //Liste déroulante
-                                /*'<div class="form-group">',
-                                    '<label>Selects</label>',
-                                    '<select class="form-control">',
-                                        '<option>1</option>',
-                                        '<option>2</option>',
-                                        '<option>3</option>',
-                                        '<option>4</option>',
-                                        '<option>5</option>',
-                                    '</select>',
-                                '</div>',*/
-
-                                //Sélections multiples
-                                /*'<div class="form-group">',
-                                    '<label>Multiple Selects</label>',
-                                     '<select multiple class="form-control">',
-                                        '<option>1</option>',
-                                        '<option>2</option>',
-                                        '<option>3</option>',
-                                        '<option>4</option>',
-                                        '<option>5</option>',
-                                    '</select>',
-                                '</div>',*/
-
-                                //Bouton d'envoi
-                                '<button type="submit" class="btn btn-default">Envoi</button>',
-                                
-                                //Bouton reset
-                                '<button type="reset" class="btn btn-default">Reset</button>',
-
-                            '</form>',
-
+                //Boutons radio sur plusieurs lignes
+                '<div class="form-group">',
+                    '<label> Type d\'informations : </label>',
+                        '<div class="radio">',
+                                '<label>',
+                                    '<input type="radio" name="AgendaType" id="GENERAL" value="GENERAL" checked>GENERAL',
+                                '</label>',
                         '</div>',
+
+                        '<div class="radio">',
+                                '<label>',
+                                    '<input type="radio" name="AgendaType" id="BU" value="BU">BU',
+                                '</label>',
+                        '</div>',
+
+                        '<div class="radio">',
+                                '<label>',
+                                    '<input type="radio" name="AgendaType" id="SJEPG" value="SJEPG">SJEPG',
+                                '</label>',
+                        '</div>',
+                '</div>',
+
+                //Bouton d'envoi
+                '<button type="submit" name ="Envoi" class="btn btn-default">Envoi</button>',
+
+                //Bouton reset
+                '<button type="reset" class="btn btn-default">Reset</button>',
+
+            '</form>',
+
+        '</div>',
+
+
+                         '<br>On affiche : '.$_POST['AgendaMessage'],
+                         '<br>On affiche aussi : ' .$_POST['AgendaType'],
+                         '<br>On affiche enfin : ' .$_POST['AgendaDate']; 
                         
-                        //Formlaires désactivés
-                       '<div class="col-lg-6">',
-                                /*'<h1>Formulaires désactivés</h1>',
+                        //Erreur du bouton d'envoi
+                        $errEnvoi = isset($_POST['Envoi']);
+                        $errDate = empty($_POST['AgendaDate']);
+                        $errTitre = empty($_POST['AgendaTitle']);    
+                        $errMessage = empty($_POST['AgendaMessage']);
 
-                                '<form role="form">',
-
-                                    '<fieldset disabled>',
-
-                                        '<div class="form-group">',
-                                            '<label for="disabledSelect">Champ texte désactivé</label>',
-                                            '<input class="form-control" id="disabledInput" type="text" placeholder="Champ texte désactivé" disabled>',
-                                        '</div>',
-
-                                        '<div class="form-group">',
-                                            '<label for="disabledSelect">Menu de sélection désactivé</label>',
-                                            '<select id="disabledSelect" class="form-control">',
-                                                '<option>Sélection désactivée</option>',
-                                            '</select>',
-                                        '</div>',
-
-                                        '<div class="checkbox">',
-                                            '<label>',
-                                                '<input type="checkbox">Checkbox désactivée',
-                                            '</label>',
-                                        '</div>',
-
-                                        '<button type="submit" class="btn btn-primary">Bouton désactivé</button>',
-
-                                    '</fieldset>',
-
-                                '</form>', */
-
-                                //3 couleurs de formulaire
-                               /*'<h1>Formulaire avc 3 couleurs</h1>',
-
-                                '<form role="form">',
-
-                                    '<div class="form-group has-success">',
-                                        '<label class="control-label" for="inputSuccess">Entrée valide</label>',
-                                        '<input type="text" class="form-control" id="inputSuccess">',
-                                    '</div>',
-
-                                    '<div class="form-group has-warning">',
-                                        '<label class="control-label" for="inputWarning">Entrée avec warning</label>',
-                                        '<input type="text" class="form-control" id="inputWarning">',
-                                    '</div>',
-
-                                    '<div class="form-group has-error">',
-                                        '<label class="control-label" for="inputError">Entrée avec erreur</label>',
-                                        '<input type="text" class="form-control" id="inputError">',
-                                    '</div>',
-
-                                '</form>', */
-
-                             /* '<h1>Input Groups</h1>',
-
-                                '<form role="form">', 
-
-                                    //Nom d'utilisateur
-                                    '<div class="form-group input-group">',
-                                        '<span class="input-group-addon">@</span>',
-                                        '<input type="text" class="form-control" placeholder="Nom d\'utilisateur">',
-                                    '</div>',
-
-                                    //OSEF
-                                    '<div class="form-group input-group">',
-                                        '<input type="text" class="form-control">',
-                                       ' <span class="input-group-addon">.00</span>',
-                                    '</div>',
-
-                                    //OSEF
-                                    '<div class="form-group input-group">',
-                                        '<span class="input-group-addon"><i class="fa fa-eur"></i></span>',
-                                        '<input type="text" class="form-control" placeholder="Font Awesome Icon">',
-                                    '</div>', 
-
-                                    //OSEF
-                                    '<div class="form-group input-group">',
-                                        '<span class="input-group-addon">$</span>',
-                                        '<input type="text" class="form-control">',
-                                       ' <span class="input-group-addon">.00</span>',
-                                    '</div>',
-
-                                    //Barre de recherche
-                                    '<div class="form-group input-group">',
-                                        '<input type="text" class="form-control">',
-                                        '<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>',
-                                    '</div>',
-
-                           '</form>', */
-
-                            //Lien d'informations sur les formulaires
-                            //'<p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstraps Form Documentation</a>.</p>',
-
-                        '</div>',
-                    
-                    '</div>';
-                    //<!-- /.row --> 
-                    
+                        $numeroErr = 0;
                    
-                    echo 'On affiche : '.$_POST['AgendaText'],
-                         '<br>On affiche aussi : ' .$_POST['typeAgenda'],
-                         '<br>On affiche enfin : ' .$_POST['date']; 
+                   
+                    //Attribution des erreurs
+
+                    //Erreur 1 : pas de date
+                    if ($errEnvoi && $errDate) {        
+                        $numeroErr = 1;
+                    }
+
+                    //Erreur 2 : pas de titre
+                    if ($errEnvoi && $errTitre) {        
+                        $numeroErr = 2;
+                    }
+
+                    //Erreur 3 : pas de message
+                    if ($errEnvoi && $errMessage) {        
+                        $numeroErr = 3;
+                    }
+
+                    //Erreur 12 : pas de date ni de titre
+                    if ($errEnvoi && $errDate && $errTitre) {        
+                        $numeroErr = 12;
+                    }
+
+                    //Erreur 13 : pas de date ni de message
+                    if ($errEnvoi && $errDate && $errMessage) {        
+                        $numeroErr = 13;
+                    }
+
+                    //Erreur 23 : pas de titre ni de message
+                     if ($errEnvoi && $errTitre && $errMessage) {        
+                        $numeroErr = 23;
+                    }
+
+                    //Erreur 123 : aucun champ rempli
+                     if ($errEnvoi && $errDate && $errTitre && $errMessage) {        
+                        $numeroErr = 123;
+                    }
+
+
+
+                        switch ($numeroErr) {
+                            
+
+                            case 1:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date !");
+                                     </script>
+                                <?php                           
+                            break;
+
+                            case 2:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de titre pour l\'agenda !");
+                                    </script>
+                                 <?php
+                            break;
+
+                            case 3:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 12:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date ! \nVous n\'avez pas entré de titre pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 13:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date ! \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 23:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de titre pour l\'agenda ! \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 123:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez entré aucun champ !");
+                                    </script>
+                                <?php
+                            break;
+
+
+
+                        }
+
+
+
+/*
+
+                        if ($errEnvoi && $errDate && $errTitre && $errMessage) {
+                            ?>
+                        <script language='Javascript' type='text/Javascript'>
+                            alert("Erreur : \nVous n\'avez entré aucun champ !");
+                        </script>
+
+                     <?php
+
+                        }
+
+
+
+                       //Test si on a rempli quelque chose pour le champ date
+                        
+ /*                   if ($errEnvoi && $errDate) /*&& !empty($_POST['AgendaType']))*/ // {
+                       // echo '<br>Vous n\'avez pas sélectionné de date !';
+       /*                
+
+                    }
+
+
+                         //Test si on a rempli quelque chose pour le champ titre
+                    
+/*                    if ($errEnvoi && $errTitre) /*&& !empty($_POST['AgendaType']))*/ //{
+                       // echo '<br>Vous n\'avez pas entré de titre pour l\'agenda !'; 
+           /*              
+
+                   }
+
+                   
+                        //Test si on a rempli quelque chose pour le formulaire du de l'agenda
+                   
+  /*                  if ($errEnvoi && $errMessage) /*&& !empty($_POST['AgendaType']))*/ //{
+                       // echo '<br>Vous n\'avez pas entré de contenu pour l\'agenda !'; 
+            /*             
+
+
+                    }*/
+
+
+
+                    
+
+
+
+echo     '<div class="formulaireCentre">',
+
+            '<form method="post" action="agenda.php" role="form">',
+
+                '<div class="form-group">',
+                    '<br> <b>Sélectionnez la date pour voir l\'historique : </b><br/>',
+                    'Veuillez entrez une date : ',
+                    '<input onclick="ds_sh(this);" name="dateHisto" readonly="readonly" style="cursor:text" /><br />',
+                    '<p class="help-block">Choisir la semaine pour voir l\'historique correspondant</p>',
+                '</div>',
+
+                //Bouton d'envoi
+                '<button type="submit" name ="ChoixDate" class="btn btn-default">Envoi</button>',
+
+            '</form>',
+
+        '</div>';
+
+
+                    
+                    if (isset($_POST['ChoixDate']) && empty($_POST['dateHisto']) /*&& !empty($_POST['AgendaType'])*/) {
+                        //echo '<br>Vous n\'avez pas choisi de date pour l\'historique !'; 
+                    ?>
+                        <script language='Javascript' type='text/Javascript'>
+                            alert("Erreur : \nVous n\'avez pas choisi de date pour l\'historique !");
+                       </script>
+
+                     <?php  
+                    }
+
+
+echo    '<div class="formulaireCentre">';
+        
+        isset($_POST['dateHisto']) ? historiqueAgenda() : NULL;
+        
+echo    '</div>',
+
+    '</div>';
+    //<!-- /.row --> 
+                    
+
+
+                   
+
+
 footer();
 
-/*function getNotif() {
+function historiqueAgenda() {
+bd_Connecter();
+$dateVoulue = $_POST['dateHisto'];
+$HistoWeek = date("W", strtotime($dateVoulue));
+
+
+$sql = "SELECT `AgendaId`, `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor` FROM `Agenda` WHERE (`Agenda`.`AgendaWeek`= '".$HistoWeek."' )  ORDER BY `Agenda`.`AgendaDate` ASC     ";
+$res =mysql_query($sql);
+//$histo = mysql_fetch_assoc($res);
+
+
+echo                    '<h2>Historique de l\'agenda</h2>',
+                        '<div class="table-responsive">',
+                           '<form method="post" action="agenda.php">',
+                            '<br><table class="table table-bordered table-hover table-striped">',
+                                '<thead>',
+                                    '<tr>',
+                                        '<th>Supprimer <em>(un seul à la fois)</em>   </th>',
+                                        '<th>Date</th>',
+                                        '<th>Semaine</th>',
+                                        '<th>Titre</th>',
+                                        '<th>Message</th>',
+                                        '<th>Type</th>',
+                                        '<th>Auteur</th>',
+                                    '</tr>',
+                                '</thead>',
+                                '<tbody>';  
+
+/*if ($histo<=0) {
+echo '<br>Pas de résultat';
+}
+else { */
+   
+    while ($histo=mysql_fetch_array($res)) {
+       
+       $AgendaId = $histo['AgendaId'];
+       $AgendaDate = $histo['AgendaDate'];
+       $AgendaWeek = $histo['AgendaWeek'];
+       $AgendaTitle = $histo['AgendaTitle'];
+       $AgendaMessage = $histo['AgendaMessage'];
+       $AgendaType = $histo['AgendaType'];
+       $AgendaAuthor = $histo['AgendaAuthor'];
+
+        //On récupère l'année concernée par l'historique
+       $anneeVoulue = substr($dateVoulue, 0, 4); 
+       //
+       $anneeBD = substr($AgendaDate, 0, 4);
+
+       if ($anneeVoulue==$anneeBD)
+       //echo '<br>Le numéro des notifs :'.$NotificationID.', le message : '.$NotifiactionText.', l\'admin : '.$AdminID;
+        echo
+                                    '<tr>',
+                                        //'<td> <a href="agenda.php?action=delete&amp;id='.$AgendaId.'""> X </a> <td>',
+                                        '<td>', 
+                                            
+                                                //'<div class="form-group">',
+                                                    //'<label>Checkboxes</label>',
+                                                    //'<div class="checkbox">',
+                                                        '<label for = "aSupprimer">',
+                                                            '<input type="checkbox" name="PETET" value="'.$AgendaId.'">   Supprimer cette entrée : '.$AgendaId.'    ',
+                                                        '</label>',
+                                                        
+                                                    //'</div>',             
+                                                //'</div>', 
+                                                         
+                                            
+                                        '</td>',
+                                        '<td>'.$AgendaDate.'</td>',
+                                        '<td>'.$HistoWeek.'</td>',
+                                        '<td>'.$AgendaTitle.'</td>',
+                                        '<td>'.$AgendaTitle.'</td>',
+                                        '<td>'.$AgendaType.'</td>',
+                                        '<td>'.$AgendaAuthor.'</td>',
+                                    '</tr>';
+
+
+/*'<form method="post" action="agenda.php" role="form">',
+
+    '<div class="form-group">',
+    //'<label>Checkboxes</label>',
+    '<div class="checkbox">',
+    '<label>',
+        '<input type="checkbox" value="">Supprimer',
+    '</label>',
+    '</div>',
+                                    
+    '</div>',
+
+'</form>',*/
+
+
+
+
+
+       
+    }
+//}
+
+echo                                '</tbody>',
+                            '</table>',
+                         '<br><button type="submit" name ="delAgenda" class="btn btn-default">Supprimer</button>',
+                                                '</form>';
+
+                    $zob = $_POST['PETET'];
+                   
+
+                    echo 'On va delete : '.$zob;
+
+
+                     echo   '</div>';
+
+
+
+
+}
+
+
+function deleteAgenda() {
+    
+
     bd_Connecter();
-    $message = $_POST['Agenda'];
-    $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-    $sql = "INSERT INTO `Agenda`(`AgendaId`, `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])";
+    $suppr = $_POST['PETET'];
+    
+
+    $sql = "DELETE FROM `Agenda` WHERE `Agenda`.`AgendaId` = '".$suppr."' ";
     $res =mysql_query($sql);
+    //header('Location: notifications.php');
+    mysql_close();
+    echo "ça a été supprimé";
+}
+
+
+
+
+
+
+
+
+
+
+
+function sendData() {
+    bd_Connecter();
+    $AgendaDate = $_POST['AgendaDate']; // '".$AgendaDate."'
+    
+    //obtention de la semaine correspondante à la date sélectionnée
+    $date_string = $_POST['AgendaDate'];
+    $AgendaWeek = date("W", strtotime($date_string));
+
+    $AgendaTitle = $_POST['AgendaTitle']; // '".$AgendaTitle."'
+    $AgendaMessage = $_POST['AgendaMessage']; // '".$AgendaMessage."'
+    $AgendaType = $_POST['AgendaType']; // '".$AgendaType."'
+    $AgendaAuthor = isset($_SESSION['id']) ? $_SESSION['id'] : 1; // '".$AgendaAuthor."'
+
+
+
+    // concaténation : '".$message."' 
+      
+    $sql = "INSERT INTO `Agenda`(`AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor`) VALUES ('".$AgendaDate."','".$AgendaWeek."','".$AgendaTitle."','".$AgendaMessage."','".$AgendaType."','".$AgendaAuthor."')";
+    
+    $res =mysql_query($sql);
+    //header('Location: agenda.php');
     mysql_close();
     //send_notif($message);
-}*/
+}
 
 
 /*function sendNotif() {
