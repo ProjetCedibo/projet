@@ -14,7 +14,7 @@ else {
     NULL;
 }
 
-
+isset ($_POST['PETET']) ? deleteAgenda() : NULL ;
 
 
 
@@ -395,49 +395,165 @@ echo
                          '<br>On affiche : '.$_POST['AgendaMessage'],
                          '<br>On affiche aussi : ' .$_POST['AgendaType'],
                          '<br>On affiche enfin : ' .$_POST['AgendaDate']; 
+                        
+                        //Erreur du bouton d'envoi
+                        $errEnvoi = isset($_POST['Envoi']);
+                        $errDate = empty($_POST['AgendaDate']);
+                        $errTitre = empty($_POST['AgendaTitle']);    
+                        $errMessage = empty($_POST['AgendaMessage']);
 
+                        $numeroErr = 0;
+                   
+                   
+                    //Attribution des erreurs
 
+                    //Erreur 1 : pas de date
+                    if ($errEnvoi && $errDate) {        
+                        $numeroErr = 1;
+                    }
 
-                             //Test si on a rempli quelque chose pour le champ date
-                    if (isset($_POST['Envoi']) && empty($_POST['AgendaDate']) /*&& !empty($_POST['AgendaType'])*/)  {
-                       // echo '<br>Vous n\'avez pas sélectionné de date !';
-                        ?>
-                        <script language='Javascript' type='text/Javascript'>
-                            alert("Erreur : Vous n\'avez pas sélectionné de date !");
-                        </script>
+                    //Erreur 2 : pas de titre
+                    if ($errEnvoi && $errTitre) {        
+                        $numeroErr = 2;
+                    }
 
-                     <?php
+                    //Erreur 3 : pas de message
+                    if ($errEnvoi && $errMessage) {        
+                        $numeroErr = 3;
+                    }
 
+                    //Erreur 12 : pas de date ni de titre
+                    if ($errEnvoi && $errDate && $errTitre) {        
+                        $numeroErr = 12;
+                    }
+
+                    //Erreur 13 : pas de date ni de message
+                    if ($errEnvoi && $errDate && $errMessage) {        
+                        $numeroErr = 13;
+                    }
+
+                    //Erreur 23 : pas de titre ni de message
+                     if ($errEnvoi && $errTitre && $errMessage) {        
+                        $numeroErr = 23;
+                    }
+
+                    //Erreur 123 : aucun champ rempli
+                     if ($errEnvoi && $errDate && $errTitre && $errMessage) {        
+                        $numeroErr = 123;
                     }
 
 
 
+                        switch ($numeroErr) {
+                            
 
-                         //Test si on a rempli quelque chose pour le champ titre
-                    if (isset($_POST['Envoi']) && empty($_POST['AgendaTitle']) /*&& !empty($_POST['AgendaType'])*/) {
-                       // echo '<br>Vous n\'avez pas entré de titre pour l\'agenda !'; 
-                         ?>
+                            case 1:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date !");
+                                     </script>
+                                <?php                           
+                            break;
+
+                            case 2:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de titre pour l\'agenda !");
+                                    </script>
+                                 <?php
+                            break;
+
+                            case 3:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 12:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date ! \nVous n\'avez pas entré de titre pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 13:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas sélectionné de date ! \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 23:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez pas entré de titre pour l\'agenda ! \nVous n\'avez pas entré de contenu pour l\'agenda !");
+                                    </script>
+                                <?php
+                            break;
+
+                            case 123:
+                                ?>
+                                    <script language='Javascript' type='text/Javascript'>
+                                        alert("Erreur : \nVous n\'avez entré aucun champ !");
+                                    </script>
+                                <?php
+                            break;
+
+
+
+                        }
+
+
+
+/*
+
+                        if ($errEnvoi && $errDate && $errTitre && $errMessage) {
+                            ?>
                         <script language='Javascript' type='text/Javascript'>
-                            alert("Erreur : Vous n\'avez pas entré de titre pour l\'agenda !");
+                            alert("Erreur : \nVous n\'avez entré aucun champ !");
                         </script>
 
                      <?php
+
+                        }
+
+
+
+                       //Test si on a rempli quelque chose pour le champ date
+                        
+ /*                   if ($errEnvoi && $errDate) /*&& !empty($_POST['AgendaType']))*/ // {
+                       // echo '<br>Vous n\'avez pas sélectionné de date !';
+       /*                
+
+                    }
+
+
+                         //Test si on a rempli quelque chose pour le champ titre
+                    
+/*                    if ($errEnvoi && $errTitre) /*&& !empty($_POST['AgendaType']))*/ //{
+                       // echo '<br>Vous n\'avez pas entré de titre pour l\'agenda !'; 
+           /*              
 
                    }
 
                    
                         //Test si on a rempli quelque chose pour le formulaire du de l'agenda
-                    if (isset($_POST['Envoi']) && empty($_POST['AgendaMessage']) /*&& !empty($_POST['AgendaType'])*/) {
+                   
+  /*                  if ($errEnvoi && $errMessage) /*&& !empty($_POST['AgendaType']))*/ //{
                        // echo '<br>Vous n\'avez pas entré de contenu pour l\'agenda !'; 
-                         ?>
-                        <script language='Javascript' type='text/Javascript'>
-                            alert("Erreur : Vous n\'avez pas entré de contenu pour l\'agenda");
-                        </script>
-
-                     <?php
+            /*             
 
 
-                    }
+                    }*/
+
+
+
+                    
+
 
 
 echo     '<div class="formulaireCentre">',
@@ -464,7 +580,7 @@ echo     '<div class="formulaireCentre">',
                         //echo '<br>Vous n\'avez pas choisi de date pour l\'historique !'; 
                     ?>
                         <script language='Javascript' type='text/Javascript'>
-                            alert("Erreur : Vous n\'avez pas choisi de date pour l\'historique !");
+                            alert("Erreur : \nVous n\'avez pas choisi de date pour l\'historique !");
                        </script>
 
                      <?php  
@@ -472,7 +588,9 @@ echo     '<div class="formulaireCentre">',
 
 
 echo    '<div class="formulaireCentre">';
-        historiqueAgenda();
+        
+        isset($_POST['dateHisto']) ? historiqueAgenda() : NULL;
+        
 echo    '</div>',
 
     '</div>';
@@ -491,16 +609,18 @@ $dateVoulue = $_POST['dateHisto'];
 $HistoWeek = date("W", strtotime($dateVoulue));
 
 
-$sql = "SELECT `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor` FROM `Agenda` WHERE (`Agenda`.`AgendaWeek`= '".$HistoWeek."' )";
+$sql = "SELECT `AgendaId`, `AgendaDate`, `AgendaWeek`, `AgendaTitle`, `AgendaMessage`, `AgendaType`, `AgendaAuthor` FROM `Agenda` WHERE (`Agenda`.`AgendaWeek`= '".$HistoWeek."' )  ORDER BY `Agenda`.`AgendaDate` ASC     ";
 $res =mysql_query($sql);
 //$histo = mysql_fetch_assoc($res);
 
 
 echo                    '<h2>Historique de l\'agenda</h2>',
                         '<div class="table-responsive">',
-                            '<table class="table table-bordered table-hover table-striped">',
+                           '<form method="post" action="agenda.php">',
+                            '<br><table class="table table-bordered table-hover table-striped">',
                                 '<thead>',
                                     '<tr>',
+                                        '<th>Supprimer <em>(un seul à la fois)</em>   </th>',
                                         '<th>Date</th>',
                                         '<th>Semaine</th>',
                                         '<th>Titre</th>',
@@ -509,15 +629,16 @@ echo                    '<h2>Historique de l\'agenda</h2>',
                                         '<th>Auteur</th>',
                                     '</tr>',
                                 '</thead>',
-                                '<tbody>'; 
+                                '<tbody>';  
 
 /*if ($histo<=0) {
 echo '<br>Pas de résultat';
 }
 else { */
-   $compteur = 0;
+   
     while ($histo=mysql_fetch_array($res)) {
-       $compteur+=1;
+       
+       $AgendaId = $histo['AgendaId'];
        $AgendaDate = $histo['AgendaDate'];
        $AgendaWeek = $histo['AgendaWeek'];
        $AgendaTitle = $histo['AgendaTitle'];
@@ -534,6 +655,21 @@ else { */
        //echo '<br>Le numéro des notifs :'.$NotificationID.', le message : '.$NotifiactionText.', l\'admin : '.$AdminID;
         echo
                                     '<tr>',
+                                        //'<td> <a href="agenda.php?action=delete&amp;id='.$AgendaId.'""> X </a> <td>',
+                                        '<td>', 
+                                            
+                                                //'<div class="form-group">',
+                                                    //'<label>Checkboxes</label>',
+                                                    //'<div class="checkbox">',
+                                                        '<label for = "aSupprimer">',
+                                                            '<input type="checkbox" name="PETET" value="'.$AgendaId.'">   Supprimer cette entrée : '.$AgendaId.'    ',
+                                                        '</label>',
+                                                        
+                                                    //'</div>',             
+                                                //'</div>', 
+                                                         
+                                            
+                                        '</td>',
                                         '<td>'.$AgendaDate.'</td>',
                                         '<td>'.$HistoWeek.'</td>',
                                         '<td>'.$AgendaTitle.'</td>',
@@ -543,22 +679,63 @@ else { */
                                     '</tr>';
 
 
+/*'<form method="post" action="agenda.php" role="form">',
+
+    '<div class="form-group">',
+    //'<label>Checkboxes</label>',
+    '<div class="checkbox">',
+    '<label>',
+        '<input type="checkbox" value="">Supprimer',
+    '</label>',
+    '</div>',
+                                    
+    '</div>',
+
+'</form>',*/
 
 
-       if ($compteur == 10) {
-            exit; 
-       }
+
+
+
+       
     }
 //}
 
 echo                                '</tbody>',
                             '</table>',
-                        '</div>';
+                         '<br><button type="submit" name ="delAgenda" class="btn btn-default">Supprimer</button>',
+                                                '</form>';
+
+                    $zob = $_POST['PETET'];
+                   
+
+                    echo 'On va delete : '.$zob;
+
+
+                     echo   '</div>';
 
 
 
 
 }
+
+
+function deleteAgenda() {
+    
+
+    bd_Connecter();
+    $suppr = $_POST['PETET'];
+    
+
+    $sql = "DELETE FROM `Agenda` WHERE `Agenda`.`AgendaId` = '".$suppr."' ";
+    $res =mysql_query($sql);
+    //header('Location: notifications.php');
+    mysql_close();
+    echo "ça a été supprimé";
+}
+
+
+
 
 
 

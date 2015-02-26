@@ -12,7 +12,7 @@ afficheBarreHaute();
 afficheBarreGauche($page);
 afficheMiniBarre($page);
  
-
+date_default_timezone_set("Europe/Paris");
 
 bd_Connecter();
 $sql = "SELECT COUNT(*) FROM User";
@@ -120,13 +120,13 @@ mysql_close();
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
                                         '<div class="huge">',$nb_connectJour,'</div>',
-                                        '<div>Connexions du jour</div>',
+                                        '<div>Connexions uniques du jour</div>',
                                     '</div>',
                                 '</div>',
                             '</div>',
                             '<a href="#">',
                                 '<div class="panel-footer">',
-                                    '<span class="pull-left">Détails sur les connexions du jour</span>',
+                                    '<span class="pull-left">Détails sur les connexions uniques du jour</span>',
                                     '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
                                     '<div class="clearfix"></div>',
                                 '</div>',
