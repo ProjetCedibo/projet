@@ -25,6 +25,7 @@
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvD-UJ-JVC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="N4O-zn-bVn" kind="embed" id="cHJ-cD-TDs"/>
                                 </connections>
@@ -48,14 +49,14 @@
                                 <exclude reference="UvD-UJ-JVC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Sds-Gc-IlN"/>
-                                <exclude reference="iAP-8j-F8i"/>
-                                <exclude reference="qhA-fB-eqr"/>
+                                <exclude reference="0wv-Nc-7pJ"/>
                                 <exclude reference="3GL-nH-QrV"/>
                                 <exclude reference="fEs-UX-6sQ"/>
                                 <exclude reference="khU-XE-xxA"/>
                                 <exclude reference="uMx-u7-3SO"/>
-                                <exclude reference="0wv-Nc-7pJ"/>
+                                <exclude reference="Sds-Gc-IlN"/>
+                                <exclude reference="iAP-8j-F8i"/>
+                                <exclude reference="qhA-fB-eqr"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -64,14 +65,14 @@
                                 <include reference="UvD-UJ-JVC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Sds-Gc-IlN"/>
-                                <include reference="iAP-8j-F8i"/>
-                                <include reference="qhA-fB-eqr"/>
+                                <include reference="0wv-Nc-7pJ"/>
                                 <include reference="3GL-nH-QrV"/>
                                 <include reference="fEs-UX-6sQ"/>
                                 <include reference="khU-XE-xxA"/>
                                 <include reference="uMx-u7-3SO"/>
-                                <include reference="0wv-Nc-7pJ"/>
+                                <include reference="Sds-Gc-IlN"/>
+                                <include reference="iAP-8j-F8i"/>
+                                <include reference="qhA-fB-eqr"/>
                             </mask>
                         </variation>
                     </view>
@@ -273,6 +274,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="LeftMenuView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7pk-W4-kwm" customClass="LeftMenuView" customModule="sjepg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bok-dI-htx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -464,6 +466,7 @@
             <objects>
                 <tableViewController id="N4O-zn-bVn" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EGa-8C-ap3">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
