@@ -17,14 +17,18 @@ function week(){
 
     $sql= "SELECT * FROM Agenda WHERE AgendaWeek = \"$week\"";
 	$r = mysql_query($sql);
-	$res = mysql_fetch_assoc($r);
-	$res = json_encode($res);
-	
+	//$res = mysql_fetch_assoc($r);
+	//$res = json_encode($res);
+	$rows = array();
+	while($res = mysqli_fetch_assoc($r)) {
+    	$rows[] = $res;
+	}
+	echo json_encode($rows);
 
 
 
 
-    echo $res;
+    //echo $res;
 	//$payload['aps'] = array('alert' => 'This is the alert text', 'badge' => 1, 'sound' => 'default');
 //$payload = json_encode($payload);
 

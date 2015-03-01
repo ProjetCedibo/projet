@@ -11,7 +11,7 @@ import Foundation
 
 class AgendaViewController: UITableViewController {
     
-    var currentWeek: Int?
+    var currentWeek: Int = 0
     
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class AgendaViewController: UITableViewController {
         self.view.addGestureRecognizer(swipeLeft)
         
         
-        getAgenda(currentWeek!)
+        getAgenda(currentWeek)
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,8 +49,12 @@ class AgendaViewController: UITableViewController {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
                 println("Swiped right")
+                self.currentWeek--
+                getAgenda(currentWeek)
             case UISwipeGestureRecognizerDirection.Left:
                 println("Swipe Left")
+                self.currentWeek++
+                getAgenda(currentWeek)
             default:
                 break
             }
