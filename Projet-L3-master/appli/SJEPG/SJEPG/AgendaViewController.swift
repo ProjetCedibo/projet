@@ -1,39 +1,63 @@
 //
-//  ViewController.swift
+//  AgendaViewController.swift
 //  SJEPG
 //
-//  Created by petetin cédric on 15/01/2015.
+//  Created by petetin cédric on 01/03/2015.
 //  Copyright (c) 2015 Petetin Cédric & Akrach Ibrahim. All rights reserved.
 //
 
 import UIKit
 import Foundation
 
-@objc
-protocol CenterViewControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func collapseSidePanels()
-}
-
-
-class CenterViewController: UIViewController {
-
+class AgendaViewController: UITableViewController {
     
-    var delegate: CenterViewControllerDelegate?
+    var currentWeek: Int?
     
-    @IBOutlet weak var dcd: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad();
-        //ProgressView.shared.showProgressView(view)
-        dcd.layer.cornerRadius = 10.0
-        dcd.clipsToBounds = true
-        addUserOrConnextion()
-        getAgenda(7)
+        super.viewDidLoad()
         
-        //ProgressView.shared.hideProgressView()
+        let calendar = NSCalendar.currentCalendar()
+        let date = NSDate()
+        let components = calendar.components(.MonthCalendarUnit | .DayCalendarUnit, fromDate: date)
+
+        currentWeek = calendar.component(.CalendarUnitWeekOfYear, fromDate: date)
+        currentWeek = currentWeek as NSInteger!
+        println(currentWeek)
+        
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        
+        getAgenda(currentWeek!)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                println("Swiped right")
+            case UISwipeGestureRecognizerDirection.Left:
+                println("Swipe Left")
+            default:
+                break
+            }
+        }
+    }
+    
+
     func getAgenda(week: Int){
         
         //let myURL = NSURL(string: "http://localhost:8888/php/getAgenda.php")!
@@ -43,7 +67,7 @@ class CenterViewController: UIViewController {
         
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        let bodyStr:String = "Week=7"
+        let bodyStr:String = "Week=\(week)"
         request.HTTPBody = bodyStr.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
@@ -67,16 +91,16 @@ class CenterViewController: UIViewController {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
                     var success = parseJSON["success"] as? Int
                     println("Succes: \(parseJSON)")
-                    self.dcd.text = parseJSON["AgendaMessage"] as NSString
+                    //self.dcd.text = parseJSON["AgendaMessage"] as NSString
                     var type = parseJSON["AgendaType"] as NSString
                     println(type)
-                    if type.isEqual("BU"){
+                    /*if type.isEqual("BU"){
                         self.dcd.backgroundColor = UIColor.cyanColor()
                     }else if (type.isEqual("sjepg")){
                         self.dcd.backgroundColor = UIColor.redColor()
                     }else{
                         self.dcd.backgroundColor = UIColor.greenColor()
-                    }
+                    }*/
                 }
                 else {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
@@ -88,61 +112,6 @@ class CenterViewController: UIViewController {
         task.resume()
         //closeActivity()
         
-    }
-    
-
-    
-    func addUserOrConnextion(){
-        let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
-        var device = UIDevice.currentDevice().model
-        var devOS = UIDevice.currentDevice().systemVersion
-        println(device)
-        var bodyData = "\nDeviceID=\(UUID)"
-        println(bodyData)
-        
-        //let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
-        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/register-user.php");
-        
-        let request = NSMutableURLRequest(URL:myUrl!);
-        request.HTTPMethod = "POST";
-        
-        // Compose a query string
-        let postString = "DeviceID=\(UUID)&DeviceModel=\(device)&DeviceOS=\(devOS)";//
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil
-            {
-                println("error=\(error)")
-                return
-            }
-            
-            // You can print out response object
-            println("response = \(response)")
-            
-            // Print out response body
-            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString)")
-            
-            
-        }
-        
-        task.resume()
-    }
-    
-    // MARK: Button actions
-    
-    
-    @IBAction func ShowLeftMenu(sender: AnyObject) {
-        delegate?.toggleLeftPanel?()
-    }
-    
-    //close the activity indicator
-    func closeActivity() {
-        ProgressView.shared.hideProgressView()
     }
 
 }

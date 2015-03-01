@@ -22,6 +22,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.identifiantTextField.delegate = self
         self.MDPTextField.delegate = self
         self.title = "Connexion"//Modification du titre de la view
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         var user: String? = NSUserDefaults.standardUserDefaults().stringForKey("userName")
         var pass: String? = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
         if user != nil && pass != nil{

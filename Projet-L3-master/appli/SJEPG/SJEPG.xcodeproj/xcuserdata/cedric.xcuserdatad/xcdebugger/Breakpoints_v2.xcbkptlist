@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SJEPG/LogInViewController.swift"
-            timestampString = "445190177.987477"
+            timestampString = "446778682.20918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "touchesBegan(_:withEvent:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -160,11 +160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SJEPG/AppDelegate.swift"
-            timestampString = "444567296.717755"
+            timestampString = "446869906.993599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SJEPG/AppDelegate.swift"
-            timestampString = "444688065.838146"
+            timestampString = "446869906.993599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -207,42 +207,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SJEPG/CenterViewController.swift"
-            timestampString = "444694334.666482"
+            filePath = "SJEPG/SidebarMenu-Bridging-Header.h"
+            timestampString = "446776458.348567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.__deallocating_deinit"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444694334.687114"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "@objc SJEPG.CenterViewController.__ivar_destroyer"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444694334.687324"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
+            startingLineNumber = "4"
+            endingLineNumber = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SJEPG/WebViewControllerUFC.swift"
+            timestampString = "446858580.258665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -251,159 +237,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SJEPG/CenterViewController.swift"
-            timestampString = "444873089.772584"
+            filePath = "SJEPG/LeftMenuView.swift"
+            timestampString = "446861126.941493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "CenterViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.delegate.getter : Swift.Optional&lt;SJEPG.CenterViewControllerDelegate&gt;"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.838944"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.delegate.setter : Swift.Optional&lt;SJEPG.CenterViewControllerDelegate&gt;"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.839163"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.delegate.materializeForSet : Swift.Optional&lt;SJEPG.CenterViewControllerDelegate&gt;"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.839307"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.init (SJEPG.CenterViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; SJEPG.CenterViewController"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.839442"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "167">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.init (SJEPG.CenterViewController.Type)() -&gt; SJEPG.CenterViewController"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.839575"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "98">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.init (SJEPG.CenterViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; SJEPG.CenterViewController"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/Projet/projet-app/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "444873089.839709"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SJEPG/CenterViewController.swift"
-            timestampString = "445652989.119818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SJEPG.CenterViewController.__deallocating_deinit"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/appli/Projet-L3-master/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "445652989.138454"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "@objc SJEPG.CenterViewController.__ivar_destroyer"
-                  moduleName = "SJEPG"
-                  urlString = "file:///Users/cedric/Desktop/appli/Projet-L3-master/appli/SJEPG/SJEPG/CenterViewController.swift"
-                  timestampString = "445652989.138647"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SJEPG/CenterViewController.swift"
-            timestampString = "445816057.370462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "getAgenda(_:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "adeTap(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
