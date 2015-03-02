@@ -17,8 +17,13 @@ function week(){
 
     $sql= "SELECT * FROM Agenda WHERE AgendaWeek = \"$week\"";
 	$r = mysql_query($sql);
-	$res = mysql_fetch_array($r);
-	$res = json_encode($res);
+
+	$rows = array();
+	while($row = mysql_fetch_assoc($r)):
+		array_push($rows, $row);
+	endwhile;
+
+	$res = json_encode($rows);
 	
 	echo $res;
 
@@ -32,6 +37,3 @@ function week(){
     mysql_close();
 
 }
-
-
-?>
