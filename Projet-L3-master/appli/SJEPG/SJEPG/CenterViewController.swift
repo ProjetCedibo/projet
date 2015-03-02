@@ -73,7 +73,6 @@ class CenterViewController: UIViewController {
         cell.backgroundColor = UIColor.whiteColor()
         
         cell.agendaTitle.text = self.events[indexPath.section]["AgendaTitle"] as NSString
-        cell.layer
         cell.agendaType.text = self.events[indexPath.section]["AgendaType"] as NSString
         
         return cell

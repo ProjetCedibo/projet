@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		715C927C1AA3F7C300BB7246 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C927B1AA3F7C300BB7246 /* SWRevealViewController.m */; };
-		825B076A1AA2AC130050DC97 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825B07691AA2AC130050DC97 /* AgendaViewController.swift */; };
 		82C88AFE1A67C4E100D3ED24 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C88AFD1A67C4E100D3ED24 /* LeftMenuView.swift */; };
 		82C8C21C1A7EF4A80058EAA2 /* globalFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C21B1A7EF4A80058EAA2 /* globalFunc.swift */; };
 		82C8C21E1A7EF4EF0058EAA2 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C21D1A7EF4EF0058EAA2 /* UIColor+Extensions.swift */; };
 		82CD36551A6DC6A900067D19 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD36541A6DC6A900067D19 /* WebViewController.swift */; };
 		82CD5C9F1A901F5500BE028E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82CD5C9D1A901F5500BE028E /* Main.storyboard */; };
 		82CDCDE21AA27DD0009C35DA /* WebViewControllerUFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDCDE11AA27DD0009C35DA /* WebViewControllerUFC.swift */; };
+		82CEE1D91AA3FB9B008BE372 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEE1D81AA3FB9B008BE372 /* EventCell.swift */; };
 		82D07FD91A779E4A00F6CA6E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D07FD81A779E4A00F6CA6E /* LogInViewController.swift */; };
 		82D60D3B1A67330400FA720A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D60D3A1A67330400FA720A /* AppDelegate.swift */; };
 		82D60D3D1A67330400FA720A /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D60D3C1A67330400FA720A /* CenterViewController.swift */; };
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		715C927A1AA3F7C300BB7246 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		715C927B1AA3F7C300BB7246 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		825B07691AA2AC130050DC97 /* AgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
 		82C88AFD1A67C4E100D3ED24 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		82C8C21B1A7EF4A80058EAA2 /* globalFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalFunc.swift; sourceTree = "<group>"; };
 		82C8C21D1A7EF4EF0058EAA2 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		82CD5C9E1A901F5500BE028E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82CDCDE01AA14621009C35DA /* sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sjepg.temp_caseinsensitive_rename.temp_caseinsensitive_rename.temp_caseinsensitive_rename-Bridging-Header.h"; sourceTree = "<group>"; };
 		82CDCDE11AA27DD0009C35DA /* WebViewControllerUFC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewControllerUFC.swift; sourceTree = "<group>"; };
+		82CEE1D81AA3FB9B008BE372 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		82D07FD81A779E4A00F6CA6E /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		82D60D351A67330400FA720A /* sjepg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sjepg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D60D391A67330400FA720A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,10 +108,10 @@
 				82D60D3A1A67330400FA720A /* AppDelegate.swift */,
 				82CDCDDC1AA14571009C35DA /* SWRevealViewController */,
 				82D60D3C1A67330400FA720A /* CenterViewController.swift */,
+				82CEE1D81AA3FB9B008BE372 /* EventCell.swift */,
 				82CD36541A6DC6A900067D19 /* WebViewController.swift */,
 				82CDCDE11AA27DD0009C35DA /* WebViewControllerUFC.swift */,
 				82C88AFD1A67C4E100D3ED24 /* LeftMenuView.swift */,
-				825B07691AA2AC130050DC97 /* AgendaViewController.swift */,
 				82D07FD81A779E4A00F6CA6E /* LogInViewController.swift */,
 				82C8C21B1A7EF4A80058EAA2 /* globalFunc.swift */,
 				82C8C21D1A7EF4EF0058EAA2 /* UIColor+Extensions.swift */,
@@ -256,13 +256,13 @@
 			files = (
 				82CDCDE21AA27DD0009C35DA /* WebViewControllerUFC.swift in Sources */,
 				82C88AFE1A67C4E100D3ED24 /* LeftMenuView.swift in Sources */,
+				82CEE1D91AA3FB9B008BE372 /* EventCell.swift in Sources */,
 				82D60D3D1A67330400FA720A /* CenterViewController.swift in Sources */,
 				82D07FD91A779E4A00F6CA6E /* LogInViewController.swift in Sources */,
 				82C8C21E1A7EF4EF0058EAA2 /* UIColor+Extensions.swift in Sources */,
 				82C8C21C1A7EF4A80058EAA2 /* globalFunc.swift in Sources */,
 				82CD36551A6DC6A900067D19 /* WebViewController.swift in Sources */,
 				715C927C1AA3F7C300BB7246 /* SWRevealViewController.m in Sources */,
-				825B076A1AA2AC130050DC97 /* AgendaViewController.swift in Sources */,
 				82D60D3B1A67330400FA720A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

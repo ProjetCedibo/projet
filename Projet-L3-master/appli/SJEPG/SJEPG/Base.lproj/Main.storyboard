@@ -100,8 +100,8 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outlet property="agendaTitle" destination="lf9-KM-lSi" id="c0S-wY-VJD"/>
-                                            <outlet property="agendaType" destination="78G-58-Lud" id="DXe-DS-H0a"/>
+                                            <outlet property="agendaTitle" destination="lf9-KM-lSi" id="gXY-6c-AuB"/>
+                                            <outlet property="agendaType" destination="78G-58-Lud" id="oEy-bi-Bfp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
