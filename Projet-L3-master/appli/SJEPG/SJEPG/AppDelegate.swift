@@ -81,11 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // You can print out response object
-            println("response = \(response)")
+            //println("response = \(response)")
             
             // Print out response body
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString)")
+            //println("responseString = \(responseString)")
             
             
         }
@@ -126,11 +126,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // You can print out response object
-            println("response = \(response)")
+            //println("response = \(response)")
             
             // Print out response body
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString)")
+            //println("responseString = \(responseString)")
             
             
         }
