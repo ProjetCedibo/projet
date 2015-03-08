@@ -15,16 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        application.applicationIconBadgeNumber = 0
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        /*window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let containerViewController = ContainerViewController()
         
         window!.rootViewController = containerViewController
-        window!.makeKeyAndVisible()
+        window!.makeKeyAndVisible()*/
         
+        addUserOrConnextion()
         
         //Notifiaction
+        application.applicationIconBadgeNumber = 0
         var dev = UIDevice.currentDevice().identifierForVendor.UUIDString
         println( dev)
 
@@ -59,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
         var device = UIDevice.currentDevice().model
         
-        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/notif.php");
+        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/notif.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
@@ -79,11 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // You can print out response object
-            println("response = \(response)")
+            //println("response = \(response)")
             
             // Print out response body
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString)")
+            //println("responseString = \(responseString)")
             
             
         }
@@ -93,6 +95,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application( application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError! ) {
         println( error.localizedDescription )
+    }
+    
+    func addUserOrConnextion(){
+        let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
+        var device = UIDevice.currentDevice().model
+        var devOS = UIDevice.currentDevice().systemVersion
+        println(device)
+        var bodyData = "\nDeviceID=\(UUID)"
+        println(bodyData)
+        
+        //let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
+        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/register-user.php");
+        
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "POST";
+        
+        // Compose a query string
+        let postString = "DeviceID=\(UUID)&DeviceModel=\(device)&DeviceOS=\(devOS)";//
+        
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil
+            {
+                println("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            //println("response = \(response)")
+            
+            // Print out response body
+            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+            //println("responseString = \(responseString)")
+            
+            
+        }
+        
+        task.resume()
     }
 
     func applicationWillResignActive(application: UIApplication) {

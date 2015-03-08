@@ -12,6 +12,8 @@ import WebKit
 class WebViewController: UIViewController {
     
     @IBOutlet var webView: UIWebView!
+    var lien : String?
+    var connect: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -19,7 +21,7 @@ class WebViewController: UIViewController {
     }
     
     func loadweb() {
-        var url = NSURL(string:"http://moodle.univ-fcomte.fr/")
+        var url = NSURL(string:lien!)
         var req = NSURLRequest(URL:url!)
         
         webView.loadRequest(req)
@@ -44,6 +46,10 @@ class WebViewController: UIViewController {
         webView.goForward()
     }
     
+    @IBAction func closeView(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
+
 
 }
