@@ -32,6 +32,7 @@ function week(){
 
     $sql= "SELECT * FROM Agenda WHERE AgendaWeek = \"$week\"";
 	$r = mysql_query($sql);
+<<<<<<< Updated upstream
 
 	$rows = array();
 	while($row = mysql_fetch_assoc($r)):
@@ -39,6 +40,10 @@ function week(){
 	endwhile;
 
 	$res = json_encode($rows);
+=======
+	$res = mysql_fetch_assoc($r);
+	$res = json_encode($res);
+>>>>>>> Stashed changes
 	
 	echo $res;
 
