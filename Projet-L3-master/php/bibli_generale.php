@@ -6,6 +6,7 @@
 *test si l'on est connecter ou pas.
 * @return boolean 	Vrai si l'utilisateur est connecter, faux sinon
 */
+
 function ifconnect(){
 	if(isset($_SESSION['ID'])){
 		return true;
@@ -278,14 +279,11 @@ function afficheBarreHaute () {
                     '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin actuel <b class="caret"></b></a>',
                     '<ul class="dropdown-menu">',
                         '<li>',
-                            '<a href="#"><i class="fa fa-fw fa-user"></i> Profil</a>',
+                            '<a href="administration.php"><i class="fa fa-fw fa-user"></i> Paramètres d\'administration</a>',
                         '</li>',
-                        '<li>',
-                            '<a href="#"><i class="fa fa-fw fa-envelope"></i> Ajouter un admin </a>',
-                        '</li>',
-                        '<li>',
+                       /* '<li>',
                             '<a href="#"><i class="fa fa-fw fa-gear"></i> Paramètres</a>',
-                        '</li>',
+                        '</li>', */
                         '<li class="divider"></li>',
                         '<li>',
                             '<a href="#"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>',
@@ -362,15 +360,25 @@ if ($page == 'Notifications') {
 else {
         echo 
              '<li>',
-                    ' <a href="notifications.php"><i class="fa fa-fw fa-edit"></i> Notifications </a>',
+                    '<a href="notifications.php"><i class="fa fa-fw fa-edit"></i> Notifications </a>',
              '</li>';
 }
 
+//page administration
+if ($page == 'Administration') {        
+         echo    
+            '<li class="active">',
+                '<a href="administration.php"><i class="fa fa-fw fa-wrench"></i> Administration </a>',
+            '</li>';
+}
 
+else {
+        echo 
+            '<li>',
+                '<a href="administration.php"><i class="fa fa-fw fa-wrench"></i> Administration </a>',
+            '</li>';
 
-
-
-
+}
 
 echo                   
         '</ul>',
@@ -480,10 +488,6 @@ function afficheMiniBarre($page) {
                 //<!-- /.row -->
     }
 
-
-
-
-
     //page Notifications
     if ($page == 'Notifications') {
        
@@ -516,6 +520,44 @@ function afficheMiniBarre($page) {
                 '</div>'; 
                 //<!-- /.row -->
     }
+ //page Notifications
+    if ($page == 'Administration') {
+       
+       echo
+            
+            '<div id="page-wrapper">',
+
+                '<div class="container-fluid">',
+
+                   '<div class="row">',
+                        
+                        '<div class="col-lg-12">',
+                        
+                            '<h1 class="page-header">',
+                            
+                            'Administration',
+                            
+                            '</h1>',
+                   
+                            '<ol class="breadcrumb">',
+
+                                '<li class="active">',
+                                    '<i class="fa fa-wrench"></i> Page de gestion des paramètres d\'administration',
+                                '</li>',
+                            
+                            '</ol>',
+                 
+                    '</div>',
+                
+                '</div>'; 
+                //<!-- /.row -->
+    }
+
+
+
+
+
+
 }
 
 
@@ -564,23 +606,5 @@ echo
 '</html>';
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

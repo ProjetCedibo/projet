@@ -673,7 +673,7 @@ else { */
                                         '<td>'.$AgendaDate.'</td>',
                                         '<td>'.$HistoWeek.'</td>',
                                         '<td>'.$AgendaTitle.'</td>',
-                                        '<td>'.$AgendaTitle.'</td>',
+                                        '<td>'.$AgendaMessage.'</td>',
                                         '<td>'.$AgendaType.'</td>',
                                         '<td>'.$AgendaAuthor.'</td>',
                                     '</tr>';

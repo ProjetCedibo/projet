@@ -32,6 +32,28 @@ afficheMiniBarre($page);
                                     '</textarea>', 
                                 '</div>',
 
+
+                                //Boutons radio sur plusieurs lignes
+                                '<div class="form-group">',
+                                    '<label> Type d\'informations : </label>',
+                                        '<div class="radio">',
+                                                '<label>',
+                                                    '<input type="radio" name="NotificationType" id="GENERAL" value="GENERAL" checked>GENERAL',
+                                                '</label>',
+                                        '</div>',
+
+                                        '<div class="radio">',
+                                                '<label>',
+                                                    '<input type="radio" name="NotificationType" id="BU" value="BU">BU',
+                                                '</label>',
+                                        '</div>',
+
+                                        '<div class="radio">',
+                                                '<label>',
+                                                    '<input type="radio" name="NotificationType" id="SJEPG" value="SJEPG">SJEPG',
+                                                '</label>',
+                                        '</div>',
+                                '</div>',
                             
 
                                 //Bouton d'envoi
@@ -84,7 +106,7 @@ footer();
 
 function historiqueNotif() {
 bd_Connecter();
-$sql = "SELECT `NotificationID`, `NotifiactionText`, `AdminID` FROM `Notification` ORDER BY `Notification`.`NotificationID` DESC ";
+$sql = "SELECT `NotificationID`, `NotificationType`, `NotifiactionText`, `AdminID` FROM `Notification` ORDER BY `Notification`.`NotificationID` DESC ";
 $res =mysql_query($sql);
 //$histo = mysql_fetch_assoc($res);
 
@@ -95,6 +117,7 @@ echo                    '<h2>Historique des dernières notifications</h2>',
                                 '<thead>',
                                     '<tr>',
                                         '<th>Numéro de la notification</th>',
+                                        '<th>Type de la notification</th>',
                                         '<th>Contenu</th>',
                                         '<th>Admin </th>',
                                     '</tr>',
@@ -109,12 +132,15 @@ else { */
     while ($histo=mysql_fetch_array($res)) {
        $compteur+=1;
        $NotificationID = $histo['NotificationID'];
+       $NotificationType = $histo['NotificationType']; 
        $NotifiactionText = $histo['NotifiactionText'];
+       
        $AdminID = $histo['AdminID'];
        //echo '<br>Le numéro des notifs :'.$NotificationID.', le message : '.$NotifiactionText.', l\'admin : '.$AdminID;
         echo
                                     '<tr>',
                                         '<td>'.$NotificationID.'</td>',
+                                        '<td>'.$NotificationType.'</td>',
                                         '<td>'.$NotifiactionText.'</td>',
                                         '<td>'.$AdminID.'</td>',
                                     '</tr>';
@@ -154,9 +180,10 @@ echo                                '</tbody>',
 
 function getNotif() {
     bd_Connecter();
-    $message = $_POST['Notifications'];
+    $message = addslashes($_POST['Notifications']);
+    $type = $_POST['NotificationType'];
     $admin = isset($_SESSION['id']) ? $_SESSION['id'] : 1;
-    $sql = "INSERT INTO `Notification`(`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$message."',0,'".$admin."')";
+    $sql = "INSERT INTO `Notification`(`NotificationType`,`NotifiactionText`, `NotificationBadge`, `AdminID`) VALUES ('".$type."','".$message."',0,'".$admin."')";
     $res =mysql_query($sql);
     header('Location: notifications.php');
     mysql_close();
@@ -202,7 +229,7 @@ $lightning = html_entity_decode('&#57661;',ENT_NOQUOTES,'UTF-8');
 //$test= "You just got the {$lightning}SHOCKER{$lightning}!"; */
 
 // Create the payload body
-$body['aps'] = array('badge' => 1, 'alert' => $message,  'sound' => 'default');
+$body['aps'] = array('badge' => 1, 'alert' => stripcslashes($message),  'sound' => 'default');
 
 // Encode the payload as JSON
 $payload = json_encode($body);

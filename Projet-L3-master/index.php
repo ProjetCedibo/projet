@@ -2,8 +2,8 @@
 
 session_start();
 
-include 'php/bibli_generale.php';
-include 'php/bibli_bd.php';
+include_once 'php/bibli_generale.php';
+include_once 'php/bibli_bd.php';
  
 ob_start();
 $page = 'Index';
@@ -33,8 +33,8 @@ $res =mysql_query($sql);
 $nb_connect = mysql_result($res, 0);
 
 mysql_close();
-
-            echo   
+$zob=25345;
+            echo       
                 '<div class="row">',
                     
                     //Détails sur les utilisateurs
@@ -51,11 +51,11 @@ mysql_close();
                                     '</div>',
                                ' </div>',
                             '</div>',
-                            '<a href="#">',
+                           // '<a href="#">',
                                 
                                 '<div class="panel-footer">',
-                                    '<span class="pull-left">Détails sur les utilisateurs</span>',
-                                    '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
+                                 //   '<span class="pull-left">Détails sur les utilisateurs</span>',
+                                   // '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
                                     '<div class="clearfix"></div>',
                                 '</div>',
                             '</a>',
@@ -76,10 +76,10 @@ mysql_close();
                                     '</div>',
                                 '</div>',
                             '</div>',
-                            '<a href="#">',
+                           // '<a href="#">',
                                 '<div class="panel-footer">',
-                                    '<span class="pull-left">Détails sur les administrateurs</span>',
-                                    '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
+                                 //   '<span class="pull-left">Détails sur les administrateurs</span>',
+                                   // '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
                                     '<div class="clearfix"></div>',
                                 '</div>',
                             '</a>',
@@ -96,14 +96,14 @@ mysql_close();
                                     '</div>',
                                     '<div class="col-xs-9 text-right">',
                                         '<div class="huge">',$nb_connect,'</div>',
-                                        '<div>Connexions depuis le premier jour</div>',
+                                        '<div>Connexions depuis le 1er jour</div>',
                                     '</div>',
                                 '</div>',
                             '</div>',
-                                '<a href="#">',
+                               // '<a href="#">',
                                 '<div class="panel-footer">',
-                                    '<span class="pull-left">Détails sur les connexions</span>',
-                                    '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
+                                   // '<span class="pull-left">Détails sur les connexions</span>',
+                                   // '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
                                     '<div class="clearfix"></div>',
                                 '</div>',
                             '</a>',
@@ -124,10 +124,10 @@ mysql_close();
                                     '</div>',
                                 '</div>',
                             '</div>',
-                            '<a href="#">',
+                            //'<a href="#">',
                                 '<div class="panel-footer">',
-                                    '<span class="pull-left">Détails sur les connexions uniques du jour</span>',
-                                    '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
+                                   // '<span class="pull-left">Détails sur les connexions du jour</span>',
+                                   // '<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>',
                                     '<div class="clearfix"></div>',
                                 '</div>',
                             '</a>',
@@ -144,109 +144,62 @@ mysql_close();
                                 '<h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Connexions du jour</h3>',
                             '</div>',
                             '<div class="panel-body">',
-                                '<div id="morris-area-chart"></div>',
+                                '<div id="myfirstchart"></div>' ,
                             '</div>',
                         '</div>',
                     '</div>',
                 '</div>',
-                '<!-- /.row -->'; 
+                '<!-- /.row -->';
+    //footerIndex()
 ?>
+    </div> <!-- /.container-fluid -->
+
+    </div> <!-- /#page-wrapper -->
+
+    </div> <!-- /#wrapper -->
+
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="js/plugins/morris/raphael.min.js"></script>
+<script src="js/plugins/morris/morris.js"></script>
+<script src="js/plugins/morris/morris-data.js"></script>
+
+
+
+<script>
+    $.post('php/getConnections.php', function(response) {
+        new Morris.Area({
+          element: 'myfirstchart',
+          data: JSON.parse(response),
+          xkey: 'ConnectionDate',
+          ykeys: ['DailyConnection'],
+          labels: ['Connexions du jour'],
+          pointSize: 2,
+          hideHover: 'auto',
+          resize: true
+        });
+    });
+</script>
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/flot-data.js"></script>
+
+
+    </body>,
+
+</html>;
 
 <?php
-                //Ensemble de tableaux
-                /* <div class="row">
-                    <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  <!-- <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Order #</th>
-                                                <th>Order Date</th>
-                                                <th>Order Time</th>
-                                                <th>Amount (USD)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>3326</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:29 PM</td>
-                                                <td>$321.33</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3325</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:20 PM</td>
-                                                <td>$234.34</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3324</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:03 PM</td>
-                                                <td>$724.17</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3323</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:00 PM</td>
-                                                <td>$23.71</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3322</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:49 PM</td>
-                                                <td>$8345.23</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3321</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:23 PM</td>
-                                                <td>$245.12</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3320</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:15 PM</td>
-                                                <td>$5663.54</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3319</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:13 PM</td>
-                                                <td>$943.45</td>
-                                            </tr>
-                                        </tbody>
-                                    </table> -->
-                                </div>
-                                <div class="text-right">
-                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <!-- /.row --> */
-
-            
-
-footer();
-ob_end_flush(); 
+    ob_end_flush(); 
 ?>

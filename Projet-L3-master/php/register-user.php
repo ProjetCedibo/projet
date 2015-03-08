@@ -9,6 +9,8 @@
 
 	ob_end_flush();
 
+
+	
 	function addUser(){
 		date_default_timezone_set("Europe/Paris");
 		$DeviceID = $_POST['DeviceID'];

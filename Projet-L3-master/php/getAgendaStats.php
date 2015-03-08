@@ -3,11 +3,9 @@
 	include_once 'spdo.class.php';
 	$dbh = SPDO::getInstance();
 
-	$week = htmlspecialchars($_POST['Week']);
-
-	$stmt = $dbh->prepare("SELECT * FROM Agenda WHERE AgendaWeek = :week;");
-	$stmt->bindParam(":week", $week, PDO::PARAM_INT);
+	$stmt = $dbh->prepare("SELECT COUNT( ConnectionID ) AS DailyConnection, ConnectionDate FROM Connection GROUP BY ConnectionDate;");
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	$stmt->closeCursor();
 	echo json_encode($rows);
+
