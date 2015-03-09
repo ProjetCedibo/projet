@@ -22,6 +22,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.identifiantTextField.delegate = self
         self.MDPTextField.delegate = self
         self.title = "Connexion"//Modification du titre de la view
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         var user: String? = NSUserDefaults.standardUserDefaults().stringForKey("userName")
         var pass: String? = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
         if user != nil && pass != nil{
@@ -88,7 +89,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func updateConnectionState(state: Int){
 
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
-        let myUrl = NSURL(string: "http://sjepg.2fh.co/php/update-login.php");
+        let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/update-login.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";

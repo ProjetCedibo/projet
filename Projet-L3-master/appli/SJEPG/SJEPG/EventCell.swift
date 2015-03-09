@@ -12,4 +12,6 @@ class EventCell: UICollectionViewCell {
     
     @IBOutlet weak var agendaType: UILabel!
     @IBOutlet weak var agendaTitle: UILabel!
+    @IBOutlet weak var agendaDate: UILabel!
+    
 }

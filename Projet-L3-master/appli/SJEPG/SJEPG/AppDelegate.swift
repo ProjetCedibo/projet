@@ -16,20 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        /*window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        let containerViewController = ContainerViewController()
-        
-        window!.rootViewController = containerViewController
-        window!.makeKeyAndVisible()*/
-        
         addUserOrConnextion()
         
         //Notifiaction
         application.applicationIconBadgeNumber = 0
         var dev = UIDevice.currentDevice().identifierForVendor.UUIDString
         println( dev)
-
+        
+        //Enregistrement pour les notification en fonction de la version de l'os
         if dev >= "8.0" {
             // Register for push in iOS 8
             var types: UIUserNotificationType = UIUserNotificationType.Badge |
@@ -51,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /*
+    * Fonction permettant d'envoyer le Token a la base de données, ce qui nous permet d'envoyer les notifications par la suite.
+    */
     func application( application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData! ) {
         var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         var deviceTokenString: String = ( deviceToken.description as NSString )
@@ -66,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
-        // Compose a query string
+        // On passe en données post l'UUID du téléphone et le Token.
         let postString = "DeviceID=\(UUID)&Token=\(deviceTokenString)";//
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
@@ -79,39 +76,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("error=\(error)")
                 return
             }
-            
-            // You can print out response object
-            //println("response = \(response)")
-            
-            // Print out response body
+
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("responseString = \(responseString)")
-            
-            
         }
         
         task.resume()
     }
     
+    /*
+    * Fonction appeler en cas d'erreur au niveau des notifications
+    */
     func application( application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError! ) {
         println( error.localizedDescription )
     }
     
+    
+    /*
+    * Fonction permettant d'ajouter un utilisateur a la base de données lors de la premiere utilisation.
+    * et on ajoute une connection a l'utilisateur qui vient de lancer l'application.
+    */
     func addUserOrConnextion(){
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString
         var device = UIDevice.currentDevice().model
         var devOS = UIDevice.currentDevice().systemVersion
-        println(device)
-        var bodyData = "\nDeviceID=\(UUID)"
-        println(bodyData)
         
-        //let myUrl = NSURL(string: "http://localhost:8888/php/register-user.php");
+        
         let myUrl = NSURL(string: "http://sjepg.byethost7.com/php/register-user.php");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
-        // Compose a query string
+        // Envois des données
         let postString = "DeviceID=\(UUID)&DeviceModel=\(device)&DeviceOS=\(devOS)";//
         
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
@@ -124,15 +119,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("error=\(error)")
                 return
             }
-            
-            // You can print out response object
-            //println("response = \(response)")
-            
-            // Print out response body
+
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("responseString = \(responseString)")
-            
-            
+                        
         }
         
         task.resume()

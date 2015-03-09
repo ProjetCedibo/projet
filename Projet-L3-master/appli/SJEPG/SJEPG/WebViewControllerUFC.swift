@@ -27,6 +27,7 @@ class WebViewControllerUFC: UIViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        webViewDidFinishLoad(self.webView)
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,21 +35,38 @@ class WebViewControllerUFC: UIViewController {
     }
     
     func loadWeb(){
-        var user: String? = NSUserDefaults.standardUserDefaults().stringForKey("userName")
-        var pass: String? = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
-        //if connect == true{
-            //lien = "https://cas.univ-fcomte.fr/cas/login?service=" + lien!
-            var url = NSURL(string:lien!)
-            var req = NSURLRequest(URL:url!)
-            //req.HTTPMethod = "post"
-            
-        /*}
-        else{
-            var url = NSURL(string:lien!)
-            var req = NSURLRequest(URL:url!)
-        }*/
         
+        
+        lien = "https://cas.univ-fcomte.fr/cas/login?service=" + lien!
+        var url = NSURL(string:lien!)
+        var req = NSURLRequest(URL:url!)
         webView.loadRequest(req)
+        //if connect == true{
+            
+            
+        //}
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView!) {
+        
+        let user = NSUserDefaults.standardUserDefaults().stringForKey("userName")
+        let pass = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
+        println(user)
+        
+        if user == nil || pass == nil {return}
+        
+        if ( countElements(user!) != 0 && countElements(pass!) != 0) {
+            let loadUsernameJS = "var inputFields = document.querySelectorAll(\"input[name='username']\"); \\ for (var i = inputFields.length >>> 0; i--;) { inputFields[i].value = \'\(user)\';}"
+            let loadPasswordJS = "var inputFields = document.querySelectorAll(\"input[name='password']\"); \\ for (var i = inputFields.length >>> 0; i--;) { inputFields[i].value = \'\(pass)\';}"
+            
+            self.webView.stringByEvaluatingJavaScriptFromString(loadUsernameJS)
+            self.webView.stringByEvaluatingJavaScriptFromString(loadPasswordJS)
+            
+            let result = webView.stringByEvaluatingJavaScriptFromString("document.title")
+            println("\(result!)")
+            println("yo")
+        }
+        //println("yo")
     }
     
     @IBAction func doRefresh(AnyObject) {
