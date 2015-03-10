@@ -43,6 +43,7 @@ class CenterViewController: UIViewController {
         //Appel a la fonction récupérant les données sur le serveur
         getAgenda(currentWeek)
         
+        //Ajout de la reconaaissance des mouvement glisser de doigt
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
@@ -51,7 +52,7 @@ class CenterViewController: UIViewController {
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
 
-    
+        self.eventsCollection.backgroundColor = UIColor(hex: 0x130E0A, alpha: 0.9)
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,16 +67,20 @@ class CenterViewController: UIViewController {
         return 1
     }
     
+    /*
+    * Fonction qui créer une cellule pour chaque evenement de la semaine
+    */
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellEventID", forIndexPath: indexPath) as EventCell
         cell.backgroundColor = UIColor.whiteColor()
         cell.agendaTitle.text = self.events[indexPath.section]["AgendaTitle"] as NSString
+        cell.agendaTitle.font = UIFont.boldSystemFontOfSize(20.0)
         cell.layer.cornerRadius = 10
         cell.agendaType.text = self.events[indexPath.section]["AgendaMessage"] as NSString
         
         cell.agendaDate.text = self.events[indexPath.section]["AgendaDate"] as NSString
         var EvenType = self.events[indexPath.section]["AgendaType"] as NSString
-        
+        //coloration de la cellule en fonction de son type
         if EvenType == "SJEPG" {
             cell.backgroundColor = UIColor(hex: 0xFF335E, alpha: 0.5)
         }
@@ -111,6 +116,10 @@ class CenterViewController: UIViewController {
     }*/
     
     
+    /*
+    * Gestion des evenement en cas de glisser
+    * retour vers la semaine précedente ou aller a la semaine suivante
+    */
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -130,10 +139,12 @@ class CenterViewController: UIViewController {
         }
     }
     
-    
+    /*
+    * Récupération des données en fonction de la semaine passer en parametre
+    * voir AppDelegate
+    */
     func getAgenda(week: Int){
         ProgressView.shared.showProgressView(eventsCollection)
-        //let myURL = NSURL(string: "http://localhost:8888/php/getAgenda.php")!
         let myURL = NSURL(string: "http://sjepg.byethost7.com/php/getAgenda.php")!
         let request = NSMutableURLRequest(URL: myURL)
         request.HTTPMethod = "POST"
@@ -145,7 +156,6 @@ class CenterViewController: UIViewController {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("Body: \(strData)")
             var err: NSError?
             var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSArray
             
@@ -168,7 +178,9 @@ class CenterViewController: UIViewController {
         task.resume()
     }
     
-    
+    /*
+    * Syncronisation des thread.
+    */
     func refresh() {
         dispatch_async(dispatch_get_main_queue(), {
             self.eventsCollection.reloadData()

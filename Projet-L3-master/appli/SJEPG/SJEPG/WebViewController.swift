@@ -20,6 +20,9 @@ class WebViewController: UIViewController {
         loadweb()
     }
     
+    /*
+    * Fonction permettant de charger la webView
+    */
     func loadweb() {
         var url = NSURL(string:lien!)
         var req = NSURLRequest(URL:url!)
@@ -32,20 +35,30 @@ class WebViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    /*
+    * Fonction permettant de raffrechir la page
+    */
     @IBAction func doRefresh(AnyObject) {
         webView.reload()
     }
     
-    
+    /*
+    * Fonction permettant de revenir a la page précédante
+    */
     @IBAction func goBack(AnyObject) {
         webView.goBack()
     }
     
-    
+    /*
+    * Fonction permettant de revenir a la page suivante
+    */
     @IBAction func goForward(AnyObject) {
         webView.goForward()
     }
     
+    /*
+    * Fonction permettant de fermer la page (au clique sur la croix)
+    */
     @IBAction func closeView(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }

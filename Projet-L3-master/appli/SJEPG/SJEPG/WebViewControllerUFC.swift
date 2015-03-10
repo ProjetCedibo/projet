@@ -36,17 +36,20 @@ class WebViewControllerUFC: UIViewController {
     
     func loadWeb(){
         
-        
-        lien = "https://cas.univ-fcomte.fr/cas/login?service=" + lien!
+        //Lien vers le cas de la faq si le site nécésite une connection
+        if connect==true{
+            lien = "https://cas.univ-fcomte.fr/cas/login?service=" + lien!
+        }
         var url = NSURL(string:lien!)
         var req = NSURLRequest(URL:url!)
         webView.loadRequest(req)
-        //if connect == true{
-            
-            
-        //}
+
     }
     
+    
+    /*
+    * Fonction permettant de rempplire les champs automatiquement (ne fonctionne pas)
+    */
     func webViewDidFinishLoad(webView: UIWebView!) {
         
         let user = NSUserDefaults.standardUserDefaults().stringForKey("userName")

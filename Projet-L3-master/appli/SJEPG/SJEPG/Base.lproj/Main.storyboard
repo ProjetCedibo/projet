@@ -42,20 +42,11 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AgendaType" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78G-58-Lud">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="8" y="37" width="281" height="65"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AgendaTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf9-KM-lSi">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="8" width="281" height="21"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AgendaDate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn6-3k-4QO">
@@ -67,6 +58,14 @@
                                                         <rect key="frame" x="8" y="0.0" width="65" height="16"/>
                                                     </variation>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AgendaTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf9-KM-lSi">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="13" width="281" height="21"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -75,15 +74,15 @@
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="78G-58-Lud"/>
-                                                <exclude reference="lf9-KM-lSi"/>
                                                 <exclude reference="pn6-3k-4QO"/>
+                                                <exclude reference="lf9-KM-lSi"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="78G-58-Lud"/>
-                                                <include reference="lf9-KM-lSi"/>
                                                 <include reference="pn6-3k-4QO"/>
+                                                <include reference="lf9-KM-lSi"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -179,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="-325"/>
+            <point key="canvasLocation" x="1521" y="-325"/>
         </scene>
         <!--LogInViewController-->
         <scene sceneID="uRU-VB-wmw">
@@ -1464,7 +1463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="jMh-Oe-MmI" customClass="FaqCellTableViewCell" customModule="sjepg" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell1" id="jMh-Oe-MmI" customClass="FaqCellTableViewCell" customModule="sjepg" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jMh-Oe-MmI" id="RFs-qg-hVf">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1492,7 +1491,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="faqQuestion" destination="tSt-1Q-YBo" id="HN0-GW-DI0"/>
-                                    <segue destination="yST-5A-Prc" kind="custom" id="IQd-Dw-q5K"/>
+                                    <segue destination="yST-5A-Prc" kind="custom" identifier="ShowAnswer" id="IQd-Dw-q5K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1519,10 +1518,10 @@
             </objects>
             <point key="canvasLocation" x="3103.5" y="-1735"/>
         </scene>
-        <!--View Controller-->
+        <!--Answer View Controller-->
         <scene sceneID="Xpr-2z-ZxV">
             <objects>
-                <viewController id="yST-5A-Prc" sceneMemberID="viewController">
+                <viewController id="yST-5A-Prc" customClass="AnswerViewController" customModule="sjepg" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ELk-DR-Yrb"/>
                         <viewControllerLayoutGuide type="bottom" id="e2F-Gh-JOE"/>
@@ -1531,6 +1530,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNg-eh-c30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

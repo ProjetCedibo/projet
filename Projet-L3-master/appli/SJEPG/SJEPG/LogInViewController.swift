@@ -23,8 +23,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.MDPTextField.delegate = self
         self.title = "Connexion"//Modification du titre de la view
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        //Récupération des données en memoire
         var user: String? = NSUserDefaults.standardUserDefaults().stringForKey("userName")
         var pass: String? = NSUserDefaults.standardUserDefaults().stringForKey("passWord")
+        //Si elle existe alors on pré-rempli les champs
         if user != nil && pass != nil{
             var userText=NSAttributedString(string: user!)
             identifiantTextField.attributedText=userText
@@ -42,12 +44,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true);
         return false;
     }
-    
+    //ferme le clavier au clique sur "return"
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
     
     //Bouton de connexion pressé
+    /*
+    * Enregistrement des données en mémoire
+    */
     @IBAction func connectionPush(sender: UIButton) {
         if identifiantTextField.text.isEmpty || MDPTextField.text.isEmpty {
             showAlert()
@@ -64,6 +69,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    /*
+    * Suppression des données enregistré en mémoire
+    */
     @IBAction func supprimerPush(sender: UIButton) {
         var userName = NSUserDefaults.standardUserDefaults()
         userName.setValue("", forKey: "userName")
@@ -86,6 +94,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    /*
+    * Change l'etat de l'utilisateur comme utilisant la connection.
+    */
     func updateConnectionState(state: Int){
 
         let UUID = UIDevice.currentDevice().identifierForVendor.UUIDString

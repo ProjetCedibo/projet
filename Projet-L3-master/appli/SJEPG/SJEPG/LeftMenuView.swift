@@ -23,6 +23,10 @@ class LeftMenuView: UITableViewController{
         super.didReceiveMemoryWarning()
     }
     
+    /*
+    * Pour chaque bouton on change les donner et on fais appel a performSegueWithIdentifier
+    * Pour changer de view, on passe en parametre la view cible.
+    */
     
     @IBAction func entTap(sender: AnyObject) {
         self.lien = "http://ent.univ-fcomte.fr/"
@@ -75,6 +79,9 @@ class LeftMenuView: UITableViewController{
         self.performSegueWithIdentifier("popUpWeb", sender: self)
     }
     
+    /*
+    * Fonction permettant de passer des données entre les view
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "popUpWeb" {
             var webViewController = segue.destinationViewController as WebViewController
